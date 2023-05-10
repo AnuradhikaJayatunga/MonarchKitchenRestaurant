@@ -244,7 +244,7 @@
 
                         notify({
                             type: "success", //alert | success | error | warning | info
-                            title: 'ORDER APPROVED',
+                            title: 'ORDER CANCELED',
                             autoHide: true, //true | false
                             delay: 2500, //number ms
                             position: {
