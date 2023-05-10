@@ -1,0 +1,22 @@
+<?php
+
+
+namespace App;
+
+
+use Illuminate\Database\Eloquent\Model;
+
+class CateringOrderItems extends Model
+{
+    protected $table = 'catering_order_items';
+    protected $primaryKey = 'idcatering_order_items';
+
+    public function formatData()
+    {
+        return [
+            'name' => $this->name,
+            'price' => $this->price,
+            'category' => 'Delivery/Table Products',
+        ];
+    }
+}

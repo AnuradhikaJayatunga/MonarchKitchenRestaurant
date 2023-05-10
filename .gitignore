@@ -1,0 +1,21 @@
+/node_modules
+/public/hot
+/public/storage
+# /public/assets/css/core.css
+# /public/assets/js/app.js
+# /public/assets/js/vendor.js
+# /public/assets/js/manifest.js
+/storage/*.key
+/vendor
+composer.lock
+package-lock.json
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
