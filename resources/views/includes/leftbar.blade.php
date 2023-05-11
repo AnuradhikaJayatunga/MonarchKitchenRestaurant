@@ -226,7 +226,7 @@ List</span></a>
                             </ul>
                         </li>
 
-                        <li class="menu-title">PURCHASING INVENTORY</li>
+                        <li class="menu-title">PURCHASES MANAGEMENT</li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="fa fa-cubes"></i><span>Purchase
