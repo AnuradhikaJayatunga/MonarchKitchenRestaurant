@@ -200,6 +200,8 @@ List</span></a>
                             </ul>
                         </li>
                         
+                        
+                        <li class="menu-title">INVENTORY MANAGEMENT</li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="fa fa-cubes"></i><span>Categories<span class="pull-right"><i
@@ -211,9 +213,6 @@ List</span></a>
                                 </li>
                             </ul>
                         </li>
-                        
-
-                        <li class="menu-title">PRODUCT INVENTORY</li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="fa fa-cubes"></i><span>Products<span class="pull-right"><i
@@ -221,7 +220,7 @@ List</span></a>
                             <ul class="list-unstyled">
 
                                 <li>
-                                    <a href="products" class="waves-effect"><span>Extra Items</span></a>
+                                    <a href="products" class="waves-effect"><span>Products Inventory</span></a>
                                 </li>
                             </ul>
                         </li>

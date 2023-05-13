@@ -19,7 +19,7 @@ class ProductController extends Controller
         $productViews = Product::all();
         $categories = Category::where('status', 1)->get();
 
-        return view('product.products', ['title' => 'Extra Items', 'categories' => $categories, 'productViews' => $productViews]);
+        return view('product.products', ['title' => 'Products Inventory', 'categories' => $categories, 'productViews' => $productViews]);
     }
 
     public function store(Request $request)
@@ -39,14 +39,14 @@ class ProductController extends Controller
                 'buyingPrice' => 'required|not_in:0'
             ], [
                 'category.required' => 'Category should be provided!',
-                'pName.required' => 'Extra Item Name should be provided!',
-                'pName.max' => 'Extra Item Name must be less than 45 characters long.',
+                'pName.required' => 'Product Name should be provided!',
+                'pName.max' => 'Product Name must be less than 45 characters long.',
                 'buyingPrice.required' => 'buying Price should be provided!',
                 'buyingPrice.not_in' => 'buying Price may not be 0!',
             ]);
 
             if (Product::where('product_name', $pName)->where('category_idcategory', $category)->first()) {
-                return response()->json(['errors' => ['error' => 'Extra Item Name already exist.']]);
+                return response()->json(['errors' => ['error' => 'Product Name already exist.']]);
             }
 
 
@@ -96,8 +96,8 @@ class ProductController extends Controller
                 'uBuyingPrice' => 'required|not_in:0',
             ], [
                 'uCategory.required' => 'category should be provided!',
-                'uPName.required' => 'Extra Item Name should be provided!',
-                'uPName.max' => 'Extra Item Name must be less than 45 characters long.',
+                'uPName.required' => 'Product Name should be provided!',
+                'uPName.max' => 'Product Name must be less than 45 characters long.',
                 'uBuyingPrice.required' => 'Buying Price should be provided!',
                 'uBuyingPrice.not_in' => 'Buying Price may not be 0!',
             ]);
@@ -105,7 +105,7 @@ class ProductController extends Controller
             if (Product::where('product_name', $uPName)->where('idproduct', '!=', $hiddenUItemId)
                 ->where('category_idcategory', $uCategory)->first()
             ) {
-                return response()->json(['errors' => ['error' => 'Extra Item Name already exist.']]);
+                return response()->json(['errors' => ['error' => 'Product Name already exist.']]);
             }
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()]);

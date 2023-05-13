@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <button type="button" class="btn btn-primary waves-effect float-right"
                                     data-toggle="modal" data-target="#addProductModal">
-                                    Add Extra Item</button>
+                                    Add New Products</button>
 
                             </div>
                         </div>
@@ -51,12 +51,12 @@
                                 <thead>
                                     <tr>
                                         <th>Category</th>
-                                        <th>Extra Item Name</th>
-                                        <th>Price</th>
+                                        <th>Product Name</th>
+                                        <th>Buying Price (Cost Per Unit)</th>
                                         <th>Status</th>
                                         <th>Edit</th>
                                     </tr>
-                                </thead>
+                                     </thead>
                                 <tbody>
                                     @if (isset($productViews))
                                         @if (count($productViews) > 0)
@@ -130,7 +130,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Add Extra Item</h5>
+                <h5 class="modal-title mt-0">Add New Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                 </button>
             </div>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label>Extra Item Name<span style="color: red"> *</span></label>
+                            <label>Product Name<span style="color: red"> *</span></label>
                             <input type="text" class="form-control" name="pName" id="pName" required
                                 placeholder="Product Name" />
                             <span class="text-danger" id="pNameError"></span>
@@ -185,7 +185,7 @@
                 <div class="row">
                     <div class="col-lg-4" style="padding-top: 14px">
                         <button type="button" class="btn btn-primary waves-effect " onclick="saveProduct()">
-                            Save Extra Item</button>
+                            Save Product</button>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Edit Extra Item</h5>
+                <h5 class="modal-title mt-0">Edit Products</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                 </button>
             </div>
@@ -225,7 +225,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label>Extra Item Name<span style="color: red"> *</span></label>
+                            <label>Product Name<span style="color: red"> *</span></label>
                             <input type="text" class="form-control" name="uPName" id="uPName" required
                                 placeholder="Product Name" />
                             <span class="text-danger" id="uPNameError"></span>
@@ -253,7 +253,7 @@
                 <div class="row">
                     <div class="col-lg-4" style="padding-top: 14px">
                         <button type="submit" class="btn btn-warning waves-effect " onclick="updateProduct()">
-                            Update Extra Item</button>
+                            Update Product</button>
                     </div>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                 $(".select2").val('').trigger('change');
                 notify({
                     type: "success", //alert | success | error | warning | info
-                    title: 'EXTRA ITEM SAVED',
+                    title: 'PRODUCT SAVED',
                     autoHide: true, //true | false
                     delay: 2500, //number ms
                     position: {
@@ -485,7 +485,7 @@
                 $(".select2").val('').trigger('change');
                 notify({
                     type: "success", //alert | success | error | warning | info
-                    title: 'EXTRA ITEM UPDATED',
+                    title: 'PRODUCT UPDATED',
                     autoHide: true, //true | false
                     delay: 2500, //number ms
                     position: {
