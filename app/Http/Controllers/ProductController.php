@@ -29,6 +29,7 @@ class ProductController extends Controller
             $pName = $request['pName'];
             $category = $request['category'];
             $buyingPrice = $request['buyingPrice'];
+            $requiredQty = $request['requiredQty'];
             $descption = $request['description'];
 
 
@@ -36,13 +37,16 @@ class ProductController extends Controller
 
                 'pName' => 'required|max:45',
                 'category' => 'required',
-                'buyingPrice' => 'required|not_in:0'
+                'buyingPrice' => 'required|not_in:0',
+                'requiredQty' => 'required|not_in:0',
             ], [
                 'category.required' => 'Category should be provided!',
                 'pName.required' => 'Product Name should be provided!',
                 'pName.max' => 'Product Name must be less than 45 characters long.',
                 'buyingPrice.required' => 'buying Price should be provided!',
                 'buyingPrice.not_in' => 'buying Price may not be 0!',
+                'requiredQty.required' => 'required Qty should be provided!',
+                'requiredQty.not_in' => 'required Qty may not be 0!',
             ]);
 
             if (Product::where('product_name', $pName)->where('category_idcategory', $category)->first()) {
@@ -59,10 +63,11 @@ class ProductController extends Controller
             $saveProduct->product_name = $pName;
             $saveProduct->buying_price = $buyingPrice;
             $saveProduct->description = $descption;
+            $saveProduct->required_qty = $requiredQty;
             $saveProduct->status = '1';
             $saveProduct->save();
             DB::commit();
-            return response()->json(['success' => 'Extra Item saved successfully.']);
+            return response()->json(['success' => 'Product saved successfully.']);
         } catch (Exception $th) {
             DB::rollBack();
             throw $th;
@@ -88,18 +93,22 @@ class ProductController extends Controller
             $uCategory = $request['uCategory'];
             $uDescription = $request['uDescription'];
             $uBuyingPrice = $request['uBuyingPrice'];
+            $uRequiredQty = $request['uRequiredQty'];
 
             $validator = \Validator::make($request->all(), [
 
                 'uCategory' => 'required',
                 'uPName' => 'required|max:45',
                 'uBuyingPrice' => 'required|not_in:0',
+                'uRequiredQty' => 'required|not_in:0',
             ], [
                 'uCategory.required' => 'category should be provided!',
                 'uPName.required' => 'Product Name should be provided!',
                 'uPName.max' => 'Product Name must be less than 45 characters long.',
                 'uBuyingPrice.required' => 'Buying Price should be provided!',
                 'uBuyingPrice.not_in' => 'Buying Price may not be 0!',
+                'uRequiredQty.required' => 'Required Qty should be provided!',
+                'uRequiredQty.not_in' => 'Required Qty may not be 0!',
             ]);
 
             if (Product::where('product_name', $uPName)->where('idproduct', '!=', $hiddenUItemId)
@@ -116,9 +125,10 @@ class ProductController extends Controller
             $updateProduct->product_name = $uPName;
             $updateProduct->description = $uDescription;
             $updateProduct->buying_price = $uBuyingPrice;
+            $updateProduct->required_qty = $uRequiredQty;
             $updateProduct->update();
             DB::commit();
-            return response()->json(['success' => 'Extra Item updated successfully.']);
+            return response()->json(['success' => 'Product updated successfully.']);
         } catch (Exception $th) {
             DB::rollBack();
             throw $th;

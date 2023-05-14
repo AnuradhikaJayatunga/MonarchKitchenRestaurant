@@ -54,6 +54,7 @@
                                         <th>Product Name</th>
                                         <th>Buying Price (Cost Per Unit)</th>
                                         <th>Status</th>
+                                        <th>Required Qty</th>
                                         <th>Edit</th>
                                     </tr>
                                      </thead>
@@ -67,7 +68,7 @@
                                                     <td>{{ $productView->Category->category_name }}</td>
                                                     <td>{{ $productView->product_name }}</td>
                                                     <td>{{ number_format($productView->buying_price, 2) }}</td>
-                                                    @if ($productView->status == 1)
+ 
                                                         <td>
                                                             <p>
                                                                 <input type="checkbox" class="status"
@@ -90,6 +91,7 @@
                                                             </p>
                                                         </td>
                                                     @endif
+                                                    <td>{{ number_format($productView->required_qty, 2) }}</td>
 
                                                     <td>
 
@@ -174,6 +176,16 @@
                             <span class="text-danger" id="buyingPriceError"></span>
                         </div>
                     </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Required Qty</label>
+                            <input type="number" class="form-control" name="requiredQty"
+                                oninput="this.value = Math.abs(this.value)" id="requiredQty" required
+                                placeholder="0.00" />
+                            <span class="text-danger" id="buyingPriceError"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -240,15 +252,26 @@
                             <span class="text-danger" id="uBuyingPriceError"></span>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label>Description</label>
-                        <textarea class="form-control" rows="3" required name="uDescription" id="uDescription"
-                            placeholder="Write some description here...."></textarea>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Required Qty</label>
+                            <input type="number" class="form-control" name="uRequiredQty"
+                                oninput="this.value = Math.abs(this.value)" id="uRequiredQty" required
+                                placeholder="0.00" />
+                            <span class="text-danger" id="uBuyingPriceError"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" required name="uDescription" id="uDescription"
+                                placeholder="Write some description here...."></textarea>
+                        </div>
                     </div>
                 </div>
+
                 <input type="hidden" id="hiddenUItemId">
                 <div class="row">
                     <div class="col-lg-4" style="padding-top: 14px">
@@ -309,6 +332,20 @@
         $('#uMaxQtyError').html('');
         $("#uBuyingPriceError").html("");
 
+        $('#requiredQtyError').html('');
+        $('#pNameError').html('');
+        $('#measurementError').html('');
+        $('#minQtyError').html('');
+        $('#maxQtyError').html('');
+        $("#buyingPriceError").html("");
+
+        $('#uRequiredQtyError').html('');
+        $('#uPNameError').html('');
+        $('#uMeasurementError').html('');
+        $('#uMinQtyError').html('');
+        $('#uMaxQtyError').html('');
+        $("#uBuyingPriceError").html("");
+
         $('input').val('');
         $(".select2").val('').trigger('change');
         $("#expHave").prop("checked", false);
@@ -325,12 +362,14 @@
         $('#minQtyError').html("");
         $('#maxQtyError').html("");
         $("#buyingPriceError").html("");
+        $("#uRequiredQtyError").html("");
 
         var pName = $("#pName").val();
         var category = $("#category").val();
         var measurement = $("#measurement").val();
         var description = $("#description").val();
         var buyingPrice = $("#buyingPrice").val();
+        var requiredQty = $("#requiredQty").val();
         var minQty = $("#minQty").val();
         var maxQty = $("#maxQty").val();
 
@@ -342,6 +381,7 @@
             minQty: minQty,
             maxQty: maxQty,
             buyingPrice: buyingPrice
+            requiredQty: requiredQty
         }, function(data) {
 
             if (data.errors != null) {
@@ -361,6 +401,11 @@
                 if (data.errors.buyingPrice) {
                     var p = document.getElementById('buyingPriceError');
                     p.innerHTML = data.errors.buyingPrice;
+                }
+
+                if (data.errors.requiredQty) {
+                    var p = document.getElementById('requiredQtyError');
+                    p.innerHTML = data.errors.requiredQty;
                 }
 
 
@@ -411,6 +456,7 @@
             $("#uPName").val(data.product_name);
             $("#uBuyingPrice").val(data.buying_price);
             $("#uCategory").val(data.category_idcategory).trigger('change');
+            $("#uRequiredQty").val(data.required_qty);
             $("#uDescription").val(data.description)
 
         });
@@ -424,12 +470,14 @@
         $('#uMinQtyError').html("");
         $('#uMaxQtyError').html("");
         $("#uBuyingPriceError").html("");
+        $("#uRequiredQty").html("");
 
         var uPName = $("#uPName").val();
         var uCategory = $("#uCategory").val();
         var uMeasurement = $("#uMeasurement").val();
         var uDescription = $("#uDescription").val();
         var uBuyingPrice = $("#uBuyingPrice").val();
+        var uRequiredQty = $("#uRequiredQty").val();
         var hiddenUItemId = $("#hiddenUItemId").val();
         var uMinQty = $("#uMinQty").val();
         var uMaxQty = $("#uMaxQty").val();
@@ -440,6 +488,7 @@
             uMeasurement: uMeasurement,
             uDescription: uDescription,
             uBuyingPrice: uBuyingPrice,
+            uRequiredQty: uRequiredQty,
             hiddenUItemId: hiddenUItemId,
             uMinQty: uMinQty,
             uMaxQty: uMaxQty,
@@ -478,6 +527,11 @@
                 if (data.errors.uBuyingPrice) {
                     var p = document.getElementById('uBuyingPriceError');
                     p.innerHTML = data.errors.uBuyingPrice;
+                }
+
+                if (data.errors.uRequiredQty) {
+                    var p = document.getElementById('uRequiredQtyError');
+                    p.innerHTML = data.errors.uRequiredQty;
                 }
 
             }
