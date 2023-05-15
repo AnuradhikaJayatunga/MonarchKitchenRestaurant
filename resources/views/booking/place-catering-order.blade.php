@@ -90,7 +90,7 @@
                                     <span id="error" class="text-danger"></span>
                                     <div class="form-group">
                                         <button class="btn btn-primary" type="button" onclick="payNow()">
-                                            Pay Now</button>
+                                            Submit</button>
                                     </div>
                                 </div>
                             </div>
