@@ -39,10 +39,10 @@
                     {{-- <form class="form-horizontal m-t-30" action="{{ route('authenticate') }}" method="POST"> --}}
 
                     <div class="form-group">
-                        <label for="username">Email Address</label>
-                        <input type="text" class="form-control" id="username" name="username"
+                        <label for="email Address">Email Address</label>
+                        <input type="text" class="form-control" id="email Address" name="email Address"
                             placeholder="Enter Email Address">
-                        <small class="text-danger">{{ $errors->first('username') }}</small>
+                        <small class="text-danger">{{ $errors->first('email Address') }}</small>
                     </div>
 
                     <div class="form-group">
