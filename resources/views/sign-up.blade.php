@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label for="pass">Email Address</label>
                                         <input type="text" class="form-control" id="username" autocomplete="off"
-                                            name="Email Address" placeholder="Email Address">
+                                            name="username" placeholder="Email Address">
                                         <small class="text-danger" id="NIcError"></small>
                                     </div>
                                     <div class="form-group">
