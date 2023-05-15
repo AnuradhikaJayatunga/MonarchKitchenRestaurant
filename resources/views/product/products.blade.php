@@ -68,7 +68,8 @@
                                                     <td>{{ $productView->Category->category_name }}</td>
                                                     <td>{{ $productView->product_name }}</td>
                                                     <td>{{ number_format($productView->buying_price, 2) }}</td>
- 
+                                                    
+                                                    @if ($productView->status == 1)
                                                         <td>
                                                             <p>
                                                                 <input type="checkbox" class="status"
@@ -380,8 +381,8 @@
             description: description,
             minQty: minQty,
             maxQty: maxQty,
-            buyingPrice: buyingPrice
-            requiredQty: requiredQty
+            buyingPrice: buyingPrice,
+            requiredQty: requiredQty,
         }, function(data) {
 
             if (data.errors != null) {

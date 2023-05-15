@@ -172,7 +172,7 @@ List</span></a>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="fa fa-cubes"></i><span>Catering
-                                    Order<span class="pull-right"><i class="mdi mdi-chevron-right"></i></span>
+                                    <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span>
                                 </span></a>
                             <ul class="list-unstyled">
 
@@ -220,7 +220,7 @@ List</span></a>
                             <ul class="list-unstyled">
 
                                 <li>
-                                    <a href="products" class="waves-effect"><span>Products Inventory</span></a>
+                                    <a href="products" class="waves-effect"><span>Add New Products </span></a>
                                 </li>
                             </ul>
                         </li>

@@ -62,12 +62,12 @@ class ProductController extends Controller
             $saveProduct->category_idcategory = $category;
             $saveProduct->product_name = $pName;
             $saveProduct->buying_price = $buyingPrice;
-            $saveProduct->description = $descption;
             $saveProduct->required_qty = $requiredQty;
+            $saveProduct->description = $descption;
             $saveProduct->status = '1';
             $saveProduct->save();
             DB::commit();
-            return response()->json(['success' => 'Product saved successfully.']);
+            return response()->json(['success' => 'Extra Item saved successfully.']);
         } catch (Exception $th) {
             DB::rollBack();
             throw $th;

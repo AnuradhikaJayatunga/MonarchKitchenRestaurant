@@ -96,7 +96,7 @@
                                         <th>QTY</th>
                                         <th style="text-align: right;">BUYING PRICE</th>
                                         <th style="text-align: right;">TOTAL PRICE</th>
-                                        <th style="text-align: center">EDIT</th>
+                                        <th style="text-align: center">OPTION</th>
                                     </tr>
                                 </thead>
                                 <tbody id="grnBody">
@@ -228,7 +228,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Edit Product</h5>
+                <h5 class="modal-title mt-0">Edit GRN</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                 </button>
             </div>
@@ -254,13 +254,13 @@
                 <div class="form-group">
                     <label for="example-text-input" class="col-form-label">Buying Price<span style="color: red">
                             *</span></label>
-
-                    <input type="number" class="form-control" name="uBp" id="uBp" required
+         
+                    <input type="number" class="form-control" disabled id="uBp" name="uBp" id="uBp" required
                         placeholder="0.00" />
                     <small class="text-danger">{{ $errors->first('bp') }}</small>
                 </div>
                 <button type="submit" class="btn btn-md btn-warning waves-effect " onclick="updateProduct()">
-                    Update Product</button>
+                    Update GRN</button>
             </div>
             <input type="hidden" id="hiddenProId">
         </div>
