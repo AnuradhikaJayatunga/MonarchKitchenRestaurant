@@ -180,7 +180,7 @@
 
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label>Required Qty</label>
+                            <label>Required Qty<span style="color: red"> *</span></label>
                             <input type="number" class="form-control" name="requiredQty"
                                 oninput="this.value = Math.abs(this.value)" id="requiredQty" required
                                 placeholder="0.00" />

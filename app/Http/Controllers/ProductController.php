@@ -38,7 +38,7 @@ class ProductController extends Controller
                 'pName' => 'required|max:45',
                 'category' => 'required',
                 'buyingPrice' => 'required|not_in:0',
-                'requiredQty' => 'required|not_in:0',
+                'requiredQty' => 'required',
             ], [
                 'category.required' => 'Category should be provided!',
                 'pName.required' => 'Product Name should be provided!',
@@ -46,7 +46,7 @@ class ProductController extends Controller
                 'buyingPrice.required' => 'buying Price should be provided!',
                 'buyingPrice.not_in' => 'buying Price may not be 0!',
                 'requiredQty.required' => 'required Qty should be provided!',
-                'requiredQty.not_in' => 'required Qty may not be 0!',
+                'requiredQty.required' => 'required Qty should be provided!',
             ]);
 
             if (Product::where('product_name', $pName)->where('category_idcategory', $category)->first()) {
@@ -100,7 +100,7 @@ class ProductController extends Controller
                 'uCategory' => 'required',
                 'uPName' => 'required|max:45',
                 'uBuyingPrice' => 'required|not_in:0',
-                'uRequiredQty' => 'required|not_in:0',
+                'uRequiredQty' => 'required',
             ], [
                 'uCategory.required' => 'category should be provided!',
                 'uPName.required' => 'Product Name should be provided!',
@@ -108,7 +108,7 @@ class ProductController extends Controller
                 'uBuyingPrice.required' => 'Buying Price should be provided!',
                 'uBuyingPrice.not_in' => 'Buying Price may not be 0!',
                 'uRequiredQty.required' => 'Required Qty should be provided!',
-                'uRequiredQty.not_in' => 'Required Qty may not be 0!',
+                'uRequiredQty.required' => 'Required Qty should be provided!',
             ]);
 
             if (Product::where('product_name', $uPName)->where('idproduct', '!=', $hiddenUItemId)
