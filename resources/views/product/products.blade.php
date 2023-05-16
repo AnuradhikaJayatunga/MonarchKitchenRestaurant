@@ -260,7 +260,7 @@
                             <input type="number" class="form-control" name="uRequiredQty"
                                 oninput="this.value = Math.abs(this.value)" id="uRequiredQty" required
                                 placeholder="0.00" />
-                            <span class="text-danger" id="uBuyingPriceError"></span>
+                            <span class="text-danger" id="uRequiredQtyError"></span>
                         </div>
                     </div>
 
