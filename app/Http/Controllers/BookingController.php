@@ -238,7 +238,7 @@ class BookingController extends Controller
             }
 
             if ($time < $timeNow && $date  <= $todayDate) {
-                return response()->json(['error' => 'Invalid time ? cannot order for lunch.']);
+                return response()->json(['error' => 'Invalid time ? Invalid Date.']);
             }
             if ($request['noOfPersons'] > 150) {
                 return response()->json(['error' => 'Quantity should be less than 150']);
@@ -511,7 +511,7 @@ class BookingController extends Controller
         }
 
         if ($time < $timeNow && $date  <= $todayDate) {
-            return response()->json(['error' => 'Invalid time ? cannot order for lunch.']);
+            return response()->json(['error' => 'Invalid time ? Invalid date.']);
         }
         if ($request['noOfPersons'] > 150) {
             return response()->json(['error' => 'Quantity should be less than 150']);

@@ -67,7 +67,7 @@ class ProductController extends Controller
             $saveProduct->status = '1';
             $saveProduct->save();
             DB::commit();
-            return response()->json(['success' => ' New product saved successfully.']);
+            return response()->json(['success' => ' New Product saved successfully.']);
         } catch (Exception $th) {
             DB::rollBack();
             throw $th;
