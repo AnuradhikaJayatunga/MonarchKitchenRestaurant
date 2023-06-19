@@ -39,8 +39,8 @@
                                         <th>Name</th>
                                         <th>Address</th>
                                         <th>Type</th>
-                                        <th>Extra Item</th>
                                         <th>Items</th>
+                                        <th>Extra Item</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
                                         <th>Date</th>
