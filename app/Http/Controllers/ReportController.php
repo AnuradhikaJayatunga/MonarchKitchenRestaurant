@@ -43,7 +43,7 @@ class ReportController extends Controller
 
         $orders = $query->get();
 
-        return view('reports.order-report', ['title' => 'Order Items Report', 'orders' => $orders]);
+        return view('reports.order-report', ['title' => 'Order Report', 'orders' => $orders]);
     }
 
     public function customerReport(Request $request)
@@ -101,6 +101,6 @@ class ReportController extends Controller
 
         $allProducts = array_merge($cateringOrderItems->toArray(), $deliveryOrderItems->toArray());
 
-        return view('reports.product-report', ['title' => 'Product Report', 'allProducts' => $allProducts]);
+        return view('reports.product-report', ['title' => 'Items Report', 'allProducts' => $allProducts]);
     }
 }

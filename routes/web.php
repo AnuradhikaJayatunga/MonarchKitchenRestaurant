@@ -198,7 +198,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::get('/accepted-orders', 'OrderController@acceptedOrders')->name('accepted-orders');
         Route::get('/completed-orders', 'OrderController@completedOrders')->name('completed-orders');
         Route::get('/canceled-orders', 'OrderController@cancelOrders')->name('canceled-orders');
-        Route::get('/canceled-orders', 'OrderController@cancelOrders')->name('canceled-orders');
+       
 
         Route::post('/approved-order', 'OrderController@approvedOrder')->name('approved-order');
         Route::post('/assign-driver', 'OrderController@assignDriver')->name('assign-driver');
