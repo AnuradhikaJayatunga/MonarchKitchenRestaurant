@@ -265,7 +265,7 @@ List</span></a>
                                             class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="order-report" class="waves-effect"><span>Order Report</span></a>
+                                    <a href="order-report" class="waves-effect"><span>Order Items Report</span></a>
                                 </li>
                                 <li>
                                     <a href="product-report" class="waves-effect"><span>Product Report</span></a>

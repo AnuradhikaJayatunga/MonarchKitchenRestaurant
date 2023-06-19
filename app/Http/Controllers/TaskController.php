@@ -21,7 +21,7 @@ class TaskController extends Controller
             $assignWorks=MasterBooking::where('status',3)->where('driver',Auth::user()->iduser_master)->get();
             
 
-            return view('driver_task.completed-tasks',['title'=>'Complted Task','assignWorks'=>$assignWorks]);
+            return view('driver_task.completed-tasks',['title'=>'Completed Task','assignWorks'=>$assignWorks]);
         }
         
         public function deliveredOrder(Request $request){

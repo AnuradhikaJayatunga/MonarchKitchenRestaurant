@@ -43,7 +43,7 @@ class ReportController extends Controller
 
         $orders = $query->get();
 
-        return view('reports.order-report', ['title' => 'Order Report', 'orders' => $orders]);
+        return view('reports.order-report', ['title' => 'Order Items Report', 'orders' => $orders]);
     }
 
     public function customerReport(Request $request)
