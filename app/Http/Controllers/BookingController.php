@@ -222,6 +222,7 @@ class BookingController extends Controller
                 'date.required' => 'Date should be provided!',
                 'time.required' => 'Date should be provided!',
                 'noOfPersons.not_in' => 'c may not be 0!',
+                'noOfPersons.not_in' => 'Quantity may not be 0!',
                 'noOfPersons.gt' => 'Quantity may not be minus!',
             ]);
 
@@ -230,11 +231,17 @@ class BookingController extends Controller
             }
             $date = $request['date'];
             $time = $request['time'];
+            $cateringOrderStartTime = Carbon::parse('06:00')->format('H:i');
+            $cateringOrderEndTime = Carbon::parse('21:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');
             $timeNow = Carbon::now()->format('H:i');
 
             if ($date < $todayDate) {
                 return response()->json(['error' => 'Invalid date']);
+            }
+
+            if ($cateringOrderStartTime > $time || $cateringOrderEndTime < $time) {
+                return response()->json(['error' => 'Invalid Time']);
             }
 
             if ($time < $timeNow && $date  <= $todayDate) {
@@ -390,7 +397,8 @@ class BookingController extends Controller
                 'date' => 'required',
                 'time' => 'required',
                 'tableNo' => 'required',
-                'noOfPersons' => 'required|not_in:0|gt:0'
+                'noOfPersons' => 'required|not_in:0|gt:0|min:2',
+
             ], [
                 'productId.required' => 'Product should be provided!',
                 'tableNo.required' => 'Table No should be provided!',
@@ -398,7 +406,8 @@ class BookingController extends Controller
                 'time.required' => 'Time should be provided!',
                 'noOfPersons.required' => 'Quantity should be provided!',
                 'noOfPersons.not_in' => 'Quantity may not be 0!',
-                'noOfPersons.gt' => 'Quantity may not minus!'
+                'noOfPersons.gt' => 'Quantity may not minus!',
+                'noOfPersons.min' => 'Quantity should be greater than two!',
             ]);
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()]);
@@ -406,12 +415,19 @@ class BookingController extends Controller
 
             $date = $request['date'];
             $time = $request['time'];
+            $cateringOrderStartTime = Carbon::parse('11:00')->format('H:i');
+            $cateringOrderEndTime = Carbon::parse('22:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');
             $timeNow = Carbon::now()->format('H:i');
 
             if ($date < $todayDate) {
                 return response()->json(['error' => 'Invalid date']);
             }
+
+            if ($cateringOrderStartTime > $time || $cateringOrderEndTime < $time) {
+                return response()->json(['error' => 'Invalid Time']);
+            }
+            
             if ($time < $timeNow && $date  <= $todayDate) {
                 return response()->json(['error' => 'Invalid time ? cannot order for lunch.']);
             }

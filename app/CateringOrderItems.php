@@ -16,7 +16,7 @@ class CateringOrderItems extends Model
         return [
             'name' => $this->name,
             'price' => $this->price,
-            'category' => 'Delivery/Table Products',
+            'category' => 'Catering Orders',
         ];
     }
 }

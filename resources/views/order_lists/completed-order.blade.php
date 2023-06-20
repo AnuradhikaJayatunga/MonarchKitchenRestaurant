@@ -40,7 +40,6 @@
                                         <th>Address</th>
                                         <th>Type</th>
                                         <th>Items</th>
-                                        <th>Extra Item</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
                                         <th>Date</th>
@@ -59,7 +58,6 @@
                                                     <td><button class="btn btn-primary btn-sm" data-toggle="modal"
                                                             data-id="{{ $order->idorder }}" id="orderId"
                                                             data-target="#viewItems">View Item</button></td>
-                                                    <td>{{ $order->extra_item }}</td>
                                                     <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
