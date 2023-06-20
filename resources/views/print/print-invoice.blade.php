@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Harshadeva
+ * User: Anuradhika
  * Date: 7/31/2019
  * Time: 8:24 PM
  */
@@ -49,7 +49,7 @@ $pdf->Cell($width,$height/1.5,'Monarch Kitchen','0',1,'C');
 
 $pdf->SetFont('Arial','',7);//set font to arial, regular, 8pt
 
-$pdf->Cell($width,$height/1.5,'No 85 Moratuwa-Piliyandala Rd, Piliyandala.','0',1,'C');
+$pdf->Cell($width,$height/1.5,'No. 85, Moratuwa-Piliyandala Rd, Piliyandala.','0',1,'C');
 $pdf->Cell($width,$height/1.5,'Sri Lanka','0',1,'C');
 
 $pdf->Cell($width,$height/10,'','0',1,'C');//Horizontal Line
