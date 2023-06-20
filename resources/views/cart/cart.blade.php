@@ -131,8 +131,8 @@
                                         <div class="qty">
                                             <span class="minus bg-dark"
                                                 onclick="changeQty('minus',{{ $cart->idcart }})">-</span>
-                                            <input type="number" class="count" name="qty" id="qty"
-                                                value="{{ $cart->qty }}">
+                                            <input type="number" class="count" name="qty"
+                                                id="qty-{{ $cart->idcart }}" value="{{ $cart->qty }}">
                                             <span class="plus bg-dark"
                                                 onclick="changeQty('plus',{{ $cart->idcart }})">+</span>
                                         </div>
@@ -247,7 +247,7 @@
             type: type,
             id: id
         }, function(data) {
-            $("#qty").val(data);
+            $("#qty-" + id).val(data);
             setCost();
         })
     }

@@ -43,6 +43,8 @@
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
                                         <th>Date</th>
+                                        <th>Order placement date</th>
+                                        <th>Order request date</th>
                                         <th>Time</th>
                                         <th>Option</th>
                                     </tr>
@@ -60,7 +62,8 @@
                                                     <td><button class="btn btn-primary btn-sm" data-toggle="modal"
                                                             data-id="{{ $order->idorder }}" id="orderId"
                                                             data-target="#viewItems">View Item</button></td>
-                                                    <td>{{ $order->total_cost }}</td>
+                                                            <td>{{ $order->table }}</td>
+                                                            <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
                                                     <td>{{ $order->created_at->diffForHumans() }}</td>
@@ -80,7 +83,7 @@
                                                                     onclick="acceptOrder({{ $order->idorder }})"
                                                                     data-toggle="modal" ">Accept</i>
                                                                 </a>
-                                                                    @if ($order->status == 0)
+                                                                            @if ($order->status == 0)
                                                                     <a href="#" class="dropdown-item"
                                                                         onclick="cancelorder({{ $order->idorder }})"
                                                                         data-toggle="modal" ">Cancel</i>

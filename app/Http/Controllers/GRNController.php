@@ -387,7 +387,8 @@ class GRNController extends Controller
     {
         $POId = $request['POId'];
 
-        $getGrnTemps = GRNTemp::where('master_user_idmaster_user', Auth::user()->iduser_master)->where('purchase_order', '!=', $POId)->where('status', 1)->get();
+        $getGrnTemps = GRNTemp::where('master_user_idmaster_user', Auth::user()->iduser_master)->where('status', 1)->get();
+       
         if (count($getGrnTemps) != null) {
 
             foreach ($getGrnTemps as $getGrnTemp) {

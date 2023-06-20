@@ -8,6 +8,7 @@ use App\DeliveryOrderItems;
 use App\Order;
 use App\OrderItems;
 use App\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -141,6 +142,8 @@ class OrderController extends Controller
             $record = Order::find($request['id']);
             $record->status = 1;
             $record->sales_person_id = Auth::user()->iduser_master;
+            $record->accepted_user_id = Auth::user()->iduser_master;
+            $record->accept_date_time = Carbon::now()->format('Y-m-d H:i:s');
             $record->save();
             DB::commit();
             return response()->json(['success' => 'Order Accepted']);
