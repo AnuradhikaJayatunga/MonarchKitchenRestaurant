@@ -97,6 +97,14 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label> Requested Date<span style="color: red"> *</span></label>
+                                <input type="date" class="form-control" name="date" id="date" />
+                                <span class="text-danger" id="dateError"></span>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
 
@@ -125,6 +133,7 @@
                                     <th>QTY</th>
                                     <th style="text-align: right;">BUYING PRICE</th>
                                     <th style="text-align: right;">TOTAL PRICE</th>
+                                    <th style="text-align: right;">REQUESTED DATE</th>                                   
                                     <th style="text-align: center">OPTION</th>
                                 </tr>
                                 </thead>

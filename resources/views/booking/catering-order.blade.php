@@ -85,7 +85,7 @@
 
     function addToCart(id) {
         $.post('add-to-cart', {
-            id: id
+            id: id  
         }, function(data) {
             if (data.success != null) {
                 notify({

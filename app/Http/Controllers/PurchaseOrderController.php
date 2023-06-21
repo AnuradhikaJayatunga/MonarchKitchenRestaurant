@@ -108,6 +108,7 @@ class PurchaseOrderController extends Controller
             $item = $request['item'];
             $qtyGrn = $request['qtyGrn'];
             $bPrice = $request['bPrice'];
+            $rDate = $request['rDate'];
 
             $rules = \Validator::make($request->all(), [
 
@@ -115,6 +116,7 @@ class PurchaseOrderController extends Controller
                 'item' => 'required',
                 'qtyGrn' => 'required||not_in:0',
                 'bPrice' => 'required||not_in:0',
+                'rDate'=>'required',
 
             ], [
                 'item.required' => 'Product should be provided!',
@@ -122,6 +124,7 @@ class PurchaseOrderController extends Controller
                 'qtyGrn.not_in' => 'Qty should be  more than 0!',
                 'bPrice.required' => 'Buying Price should be provided!',
                 'bPrice.not_in' => 'Buying Price should be  more than 0!',
+                'rDate.required'=>'Date should be Provided',
 
             ]);
             if ($rules->fails()) {
@@ -141,6 +144,7 @@ class PurchaseOrderController extends Controller
                 $POSave = new POTempory();
                 $POSave->bp  = $bPrice;
                 $POSave->qty = $qtyGrn;
+                $POSave->rd = $rDate;
                 $POSave->product_idproduct = $item;
                 $POSave->master_user_idmaster_user = Auth::user()->iduser_master;
                 $POSave->status = '1';
@@ -194,7 +198,6 @@ class PurchaseOrderController extends Controller
             $savePO->user_master_iduser_master = Auth::user()->iduser_master;
             $savePO->supplier_idsupplier = $supplier;
             $savePO->total = $total;
-            $savePO->date = $date;
             $savePO->status = 0;
             $savePO->save();
 
@@ -203,6 +206,7 @@ class PurchaseOrderController extends Controller
                 $savePOReg->product_idproduct = $item->product_idproduct;
                 $savePOReg->bp = $item->bp;
                 $savePOReg->qty = $item->qty;
+                $savePOReg->rd = $item->rd;
                 $savePOReg->status = 1;
                 $savePOReg->purchase_order_idpurchase_order = $savePO->idpurchase_order;
                 $savePOReg->save();

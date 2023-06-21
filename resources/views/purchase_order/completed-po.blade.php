@@ -41,7 +41,7 @@
                                 <tr>
                                     <th>PO No</th>
                                     <th>Supplier</th>
-                                    <th>Date</th>
+                                    <th>Completed Date</th>
                                     <th>Created At</th>
                                 </tr>
                                 </thead>

@@ -43,8 +43,8 @@
                                         <th>Table No</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
-                                        <th>Order placement date</th>
                                         <th>Order request date</th>
+                                        <th>Order placement date</th>
                                         <th>Time</th>
                                         <th>Option</th>
                                     </tr>

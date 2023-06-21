@@ -39,7 +39,7 @@
                                     <th>PO No</th>
                                     <th>Supplier</th>
                                     <th>Total</th>
-                                    <th>Date</th>
+                                    <th>Requested Date</th>
                                     <th>Created At</th>
                                     <th>Options</th>
                                 </tr>
