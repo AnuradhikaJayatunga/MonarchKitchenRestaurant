@@ -31,13 +31,14 @@
                 <div class="card-body">
                       <div class="table-rep-plugin">
                         <div class="table-responsive b-0" data-pattern="priority-columns">
-                            <table id="datatable"   class="table table-striped table-bordered"
+                            <table id="datatable" class="table table-striped table-bordered"
                                     cellspacing="0"
                                     width="100%">
                                 <thead>
                                 <tr>
                                     <th>PO No</th>
                                     <th>Supplier</th>
+                                    <th>Date</th>
                                     <th>Created At</th>
                                 </tr>
                                 </thead>
