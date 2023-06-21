@@ -29,10 +29,7 @@
         <div class="col-lg-12">
             <div class="card m-b-20">
                 <div class="card-body">
-                    
-
-
-                    <div class="table-rep-plugin">
+                      <div class="table-rep-plugin">
                         <div class="table-responsive b-0" data-pattern="priority-columns">
                             <table id="datatable"   class="table table-striped table-bordered"
                                     cellspacing="0"
@@ -41,7 +38,6 @@
                                 <tr>
                                     <th>PO No</th>
                                     <th>Supplier</th>
-                                    <th>Completed Date</th>
                                     <th>Created At</th>
                                 </tr>
                                 </thead>
@@ -53,11 +49,8 @@
                                         <tr>
                                             <td>{{ str_pad($PO->idpurchase_order,5,'0',STR_PAD_LEFT) }}</td>
                                             <td>{{$PO->Supplier->company_name}}</td>
-                                            
                                             <td>{{$PO->date}}</td>
-                                            <td>{{$PO->created_at}}</td>
-
-                                           
+                                            <td>{{$PO->created_at}}</td>      
                                         </tr>
                                     @endforeach
                                     @endif

@@ -29,7 +29,7 @@
         <div class="col-lg-12">
             <div class="card m-b-20">
                 <div class="card-body">
-                                        <div class="table-rep-plugin">
+                    <div class="table-rep-plugin">
                         <div class="table-responsive b-0" data-pattern="priority-columns">
                             <table id="datatable"   class="table table-striped table-bordered"
                                     cellspacing="0"
@@ -39,7 +39,6 @@
                                     <th>PO No</th>
                                     <th>Supplier</th>
                                     <th>Total</th>
-                                    <th>Requested Date</th>
                                     <th>Created At</th>
                                     <th>Options</th>
                                 </tr>
