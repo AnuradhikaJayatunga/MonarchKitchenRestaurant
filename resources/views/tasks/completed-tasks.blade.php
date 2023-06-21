@@ -42,6 +42,7 @@
                                         <th>Items</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
+                                        <th>Driver</th>
                                         <th>Option</th>
                                     </tr>
                                 </thead>
@@ -59,6 +60,7 @@
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
+                                                    <td>{{ $order->driver }}</td>
                                                     <td>
 
                                                         <div class="dropdown">
