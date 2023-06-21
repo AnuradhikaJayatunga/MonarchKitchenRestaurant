@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::get('/catering-orders', 'BookingController@cateringOrders')->name('catering-orders');
         Route::get('/place-catering-order', 'BookingController@placeCateringOrder')->name('place-catering-order');
         Route::post('/get-total-cost-with-extra', 'BookingController@getTotalCostWithExtra')->name('get-total-cost-with-extra');
-git         Route::post('/pay-catering-order', 'BookingController@payCateringOrder')->name('pay-catering-order');
+        Route::post('/pay-catering-order', 'BookingController@payCateringOrder')->name('pay-catering-order');
 
         //reservation order
         Route::get('/reservation-orders', 'BookingController@reservationOrders')->name('reservation-orders');
