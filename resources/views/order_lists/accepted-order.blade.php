@@ -96,12 +96,7 @@
                                                                 </div>
                                                             </div>
  @endif
-
-
-
-
-
-                                                    </td>
+                                                </td>
                                                 </tr>
                                             @endforeach
                                         @endif

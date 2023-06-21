@@ -40,9 +40,9 @@
                                         <th>Address</th>
                                         <th>Type</th>
                                         <th>Items</th>
+                                        <th>Table No</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
-                                        <th>Date</th>
                                         <th>Order placement date</th>
                                         <th>Order request date</th>
                                         <th>Time</th>
@@ -66,6 +66,7 @@
                                                             <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
+                                                    <td>{{ $order->created_at->format('Y-m-d') }}</td>
                                                     <td>{{ $order->created_at->diffForHumans() }}</td>
                                                     <td>
 
@@ -88,7 +89,7 @@
                                                                         onclick="cancelorder({{ $order->idorder }})"
                                                                         data-toggle="modal" ">Cancel</i>
                                                                 </a>
- @endif
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </td>
