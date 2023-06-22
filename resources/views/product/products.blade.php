@@ -332,6 +332,7 @@
         $('#uMinQtyError').html('');
         $('#uMaxQtyError').html('');
         $("#uBuyingPriceError").html("");
+        $('#uRequiredQtyError').html('');
 
         $('#requiredQtyError').html('');
         $('#pNameError').html('');
