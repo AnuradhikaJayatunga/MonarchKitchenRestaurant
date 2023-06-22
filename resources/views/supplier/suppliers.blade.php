@@ -463,7 +463,7 @@
 
     function deleteSupplier(id) {
         swal({
-                title: 'Do you really want to cancel this supplier?',
+                title: 'Do you really want to delete this supplier?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Cancel!',

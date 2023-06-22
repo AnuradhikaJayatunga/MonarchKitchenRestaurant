@@ -196,7 +196,7 @@ class CateringOrderController extends Controller
             }
 
             DB::commit();
-            return response()->json(['success' => 'Delivery order saved successfully']);
+            return response()->json(['success' => 'Catering order saved successfully']);
         } catch (Exception $e) {
             DB::rollBack();
             throw $e;

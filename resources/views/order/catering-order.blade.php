@@ -340,7 +340,7 @@
                 if (data.success != null) {
                     notify({
                         type: "success", //alert | success | error | warning | info
-                        title: 'CATERING ORDER SAVED',
+                        title: 'CATERING ITEM SAVED',
                         autoHide: true, //true | false
                         delay: 2500, //number ms
                         position: {
