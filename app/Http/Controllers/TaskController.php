@@ -16,12 +16,18 @@ class TaskController extends Controller
             return view('driver_task.pending-tasks',['title'=>'Pending Tasks','assignWorks'=>$assignWorks]);
         }
         public function completedTasks(){
-
+            if (Auth::user()->user_role_iduser_role == 1){
+                $assignWorks=MasterBooking::where('status',3)->get();
+            
+                return view('driver_task.completed-tasks',['title'=>'Completed Task','assignWorks'=>$assignWorks]);
+            }
            
-            $assignWorks=MasterBooking::where('status',3)->where('driver',Auth::user()->iduser_master)->get();
+            else{
+                $assignWorks=MasterBooking::where('status',3)->where('driver',Auth::user()->iduser_master)->get();
             
 
             return view('driver_task.completed-tasks',['title'=>'Completed Task','assignWorks'=>$assignWorks]);
+            }
         }
         
         public function deliveredOrder(Request $request){

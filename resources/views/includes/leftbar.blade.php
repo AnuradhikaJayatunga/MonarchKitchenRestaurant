@@ -84,7 +84,7 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="tasks" class="waves-effect"><span>Tasks</span></a>
+                                    <a href="tasks" class="waves-effect"><span>Pending Tasks</span></a>
                                 </li>
                                 <li>
                                     <a href="completed-tasks" class="waves-effect"><span>Completed Tasks</span></a>

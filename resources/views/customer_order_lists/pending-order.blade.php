@@ -41,7 +41,7 @@
                                         <th>Type</th>
                                         <th>Items</th>
                                         <th>Total Cost</th>
-                                        <th>Addtional Cost</th>
+                                        {{-- <th>Addtional Cost</th> --}}
                                         <th>No of Persons</th>
                                         <th>Date</th>
                                         <th>Options</th>
@@ -61,7 +61,7 @@
                                                             data-id="{{ $order->idorder }}" id="orderId"
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ number_format($order->total_cost, 2) }}</td>
-                                                    <td>{{ $order->additional_cost }}</td>
+                                                    {{-- <td>{{ $order->additional_cost }}</td> --}}
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
                                                     <td>
@@ -166,7 +166,7 @@
                             <span class="text-danger" id="noOfPersonsError"></span>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    {{-- <div class="col-lg-6">
                         <div class="form-group">
                             <label>Extra Items</label>
                             <select class="form-control select2 tab" name="extraItem" id="extraItem">
@@ -179,7 +179,7 @@
                                 <option value="Onion">Onion</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="row">
@@ -194,6 +194,14 @@
                         <div class="form-group">
                             <label>Time<span class="text-danger"> *</span></label>
                             <input type="time" class="form-control" name="time" id="time" />
+                            <span class="text-danger" id="timError"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Address<span class="text-danger"> *</span></label>
+                            <input type="text" class="form-control" name="address" id="time" />
                             <span class="text-danger" id="timError"></span>
                         </div>
                     </div>
@@ -278,7 +286,7 @@
             id: id
         }, function(data) {
             $("#noOfPersons").val(data.order.no_of_persons);
-            $("#extraItem").val(data.order.extra_item).trigger('change');
+            // $("#extraItem").val(data.order.extra_item).trigger('change');
             $("#date").val(data.order.date);
             $("#time").val(data.order.time);
             $("#hiddenCateringOrderId").val(data.order.idorder);
@@ -293,7 +301,7 @@
         $("#timError").html('');
 
         var noOfPersons = $("#noOfPersons").val();
-        var extraItem = $("#extraItem").val();
+        // var extraItem = $("#extraItem").val();
         var date = $("#date").val();
         var time = $("#time").val();
         var hiddenCateringOrderId = $("#hiddenCateringOrderId").val();
@@ -302,7 +310,7 @@
 
         $.post('editCatering', {
             noOfPersons: noOfPersons,
-            extraItem: extraItem,
+            // extraItem: extraItem,
             date: date,
             time: time,
             hiddenCateringOrderId: hiddenCateringOrderId,
