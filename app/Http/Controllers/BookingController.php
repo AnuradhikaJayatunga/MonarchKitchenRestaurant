@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 
 class BookingController extends Controller
 {
@@ -218,6 +219,7 @@ class BookingController extends Controller
                 'date' => 'required',
                 'time' => 'required',
                 'address' => 'required',
+                
             ], [
                 'noOfPersons.required' => 'Quantity should be provided!',
                 'date.required' => 'Date should be provided!',
@@ -233,7 +235,7 @@ class BookingController extends Controller
             }
             $date = $request['date'];
             $time = $request['time'];
-            $address = $request['address'];
+            $address = $address['address'];
             $cateringOrderStartTime = Carbon::parse('06:00')->format('H:i');
             $cateringOrderEndTime = Carbon::parse('21:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');
@@ -243,7 +245,11 @@ class BookingController extends Controller
                 return response()->json(['error' => 'Invalid date']);
             }
 
-            if ($cateringOrderStartTime > $time || $cateringOrderEndTime < $time) {
+            if ($address===Null) {
+                return response()->json(['error'=>'Address should be provided']);
+            }
+
+             if ($cateringOrderStartTime > $time || $cateringOrderEndTime < $time) {
                 return response()->json(['error' => 'Invalid Time']);
             }
 
@@ -254,8 +260,9 @@ class BookingController extends Controller
                 return response()->json(['error' => 'Quantity should be less than 150']);
             }
             if ($request['noOfPersons'] < 50) {
-                return response()->json(['error' => 'Quantity should be greater than 50']);
+                return response()->json(['error' => 'Minimum Quantity should be 50 ']);
             }
+           
             $order = CateringOrderItems::find($request['cateringItemId']);
             if ($order->qty === 0) {
                 return response()->json(['error' => 'Quantity not available']);
@@ -399,7 +406,7 @@ class BookingController extends Controller
             $validator = \Validator::make($request->all(), [
                 'date' => 'required',
                 'time' => 'required',
-                'tableNo' => 'required', 
+                'tableNo' => 'required',
                 'noOfPersons' => 'required|not_in:0|gt:0|min:2',
 
             ], [
@@ -407,7 +414,7 @@ class BookingController extends Controller
                 'tableNo.required' => 'Table No should be provided!',
                 'date.required' => 'Date should be provided!',
                 'time.required' => 'Time should be provided!',
-                'noOfPersons.required' => 'Quantity should be provided!', 
+                'noOfPersons.required' => 'Quantity should be provided!',
                 'noOfPersons.not_in' => 'Quantity may not be 0!',
                 'noOfPersons.gt' => 'Quantity may not minus!',
                 'noOfPersons.min' => 'Quantity should be greater than two!',
@@ -505,18 +512,18 @@ class BookingController extends Controller
     {
         $validator = \Validator::make($request->all(), [
 
-            'noOfPersons' => 'required|not_in:0|gt:0',
+            'noOfPersons' => 'required|not_in:0|gt:49',
             'date' => 'required',
             'time' => 'required',
-            'address'=>'address',
+            'address' => 'required', 
             
         ], [
             'noOfPersons.required' => 'Quantity should be provided!',
             'date.required' => 'Date should be provided!',
             'time.required' => 'Date should be provided!',
             'noOfPersons.not_in' => 'Quantity may not be 0!',
-            'noOfPersons.gt' => 'Quantity may not be minus!',
-            'address.requires' => 'Address should be provided!',
+            'noOfPersons.gt' => 'Quantity may not be less than 50!',
+            'address.required'=> 'Address should be Provided!',
            
         ]);
 
@@ -529,6 +536,7 @@ class BookingController extends Controller
         
         $todayDate = Carbon::now()->format('Y-m-d');
         $timeNow = Carbon::now()->format('H:i');
+        $address = $request['address'];
        
 
         if ($date < $todayDate) {
@@ -542,6 +550,10 @@ class BookingController extends Controller
             return response()->json(['error' => 'Quantity should be less than 150']);
         }
 
+        if ($address===Null) {
+            return response()->json(['error'=>'Address should be provided']);
+        }
+        
         $orderItem = OrderItems::where('order_idorder', $request['hiddenCateringOrderId'])->first();
 
 
@@ -577,8 +589,8 @@ class BookingController extends Controller
             $record->total_cost = $order->price * $request['noOfPersons'];
             $record->date = $date;
             $record->time = $time;
+            $record->address = $address;
             $record->extra_item = $request['extraItem'];
-            $record->address = $request['address'];
             $record->type = 'Catering Order';
             $record->no_of_persons = $request['noOfPersons'];
             $record->save();

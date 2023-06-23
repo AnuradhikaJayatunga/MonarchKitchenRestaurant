@@ -286,7 +286,6 @@
             id: id
         }, function(data) {
             $("#noOfPersons").val(data.order.no_of_persons);
-            // $("#extraItem").val(data.order.extra_item).trigger('change');
             $("#date").val(data.order.date);
             $("#time").val(data.order.time);
             $("#address").val(data.order.address);
@@ -304,7 +303,6 @@
 
 
         var noOfPersons = $("#noOfPersons").val();
-        // var extraItem = $("#extraItem").val();
         var date = $("#date").val();
         var time = $("#time").val();
         var address = $("#address").val();
@@ -314,7 +312,6 @@
 
         $.post('editCatering', {
             noOfPersons: noOfPersons,
-            // extraItem: extraItem,
             date: date,
             time: time,
             adddres: address,

@@ -152,7 +152,6 @@
         $("#addressError").html('');
 
         var noOfPersons = $("#noOfPersons").val();
-        //var extraItem = $("#extraItem").val();
         var date = $("#date").val();
         var time = $("#time").val();
         var address = $("#address").val();
@@ -165,7 +164,7 @@
             date: date,
             time: time,
             cateringItemId: cateringItemId,
-            //extraItem: extraItem
+            
         }, function(data) {
             if (data.error) {
                 var p = document.getElementById('error');
