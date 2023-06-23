@@ -157,7 +157,7 @@
         var time = $("#time").val();
         var address = $("#address").val();
         var cateringItemId = $("#cateringItemId").val();
-        //var extraItem = $("#extraItem").val();
+      
 
         $.post('pay-catering-order', {
             noOfPersons: noOfPersons,
@@ -185,7 +185,10 @@
                     p.innerHTML = data.errors.time[0];
                 }
 
-               
+                if (data.errors.address) {
+                    var p = document.getElementById('addressError');
+                    p.innerHTML = data.errors.address[0];
+                }
             }
             if (data.success) {
                 notify({

@@ -201,8 +201,8 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>Address<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" name="address" id="time" />
-                            <span class="text-danger" id="timError"></span>
+                            <input type="text" class="form-control" name="address" id="address" />
+                            <span class="text-danger" id="addressError"></span>
                         </div>
                     </div>
                 </div>
@@ -289,6 +289,7 @@
             // $("#extraItem").val(data.order.extra_item).trigger('change');
             $("#date").val(data.order.date);
             $("#time").val(data.order.time);
+            $("#address").val(data.order.address);
             $("#hiddenCateringOrderId").val(data.order.idorder);
             $("#cateringItemId").val(data);
         });
@@ -299,11 +300,14 @@
         $("#error").html('');
         $("#dateError").html('');
         $("#timError").html('');
+        $("#adddressError").html('');
+
 
         var noOfPersons = $("#noOfPersons").val();
         // var extraItem = $("#extraItem").val();
         var date = $("#date").val();
         var time = $("#time").val();
+        var address = $("#address").val();
         var hiddenCateringOrderId = $("#hiddenCateringOrderId").val();
         var cateringItemId = $("#cateringItemId").val();
 
@@ -313,6 +317,7 @@
             // extraItem: extraItem,
             date: date,
             time: time,
+            adddres: address,
             hiddenCateringOrderId: hiddenCateringOrderId,
             cateringItemId: cateringItemId
         }, function(data) {
@@ -334,6 +339,12 @@
                     var p = document.getElementById('timError');
                     p.innerHTML = data.errors.time[0];
                 }
+
+                if (data.errors.adddres) {
+                    var p = document.getElementById('addressError');
+                    p.innerHTML = data.errors.adddres[0];
+                }
+                
             }
             if (data.success) {
                 notify({

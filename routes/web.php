@@ -149,6 +149,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('getSupplierById', 'SupplierController@getById')->name('getSupplierById');
         Route::post('updateSupplier',  'SupplierController@update')->name('updateSupplier');
         Route::post('deleteSupplier',  'SupplierController@deleteSupplier')->name('deleteSupplier');
+        
  
         //Packages
         Route::get('/packages', 'PackageController@packagesIndex')->name('packages');

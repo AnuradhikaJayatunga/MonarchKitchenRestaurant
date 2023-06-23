@@ -233,7 +233,7 @@ class BookingController extends Controller
             }
             $date = $request['date'];
             $time = $request['time'];
-            $address = $address['address'];
+            $address = $request['address'];
             $cateringOrderStartTime = Carbon::parse('06:00')->format('H:i');
             $cateringOrderEndTime = Carbon::parse('21:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');
@@ -268,7 +268,7 @@ class BookingController extends Controller
             $record = new Order();
             $record->total_cost = $order->price * $request['noOfPersons'];
             $record->name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
-            $record->address = $address['address'];
+            $record->address = $request['address'];
             $record->date = $date;
             $record->time = $time;
             $record->extra_item = $request['extraItem'];
@@ -524,6 +524,7 @@ class BookingController extends Controller
 
         $date = $request['date'];
         $time = $request['time'];
+        $address = $request['address'];
         $todayDate = Carbon::now()->format('Y-m-d');
         $timeNow = Carbon::now()->format('H:i');
         $time = $request['address'];
