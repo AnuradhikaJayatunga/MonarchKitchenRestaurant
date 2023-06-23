@@ -399,7 +399,7 @@ class BookingController extends Controller
             $validator = \Validator::make($request->all(), [
                 'date' => 'required',
                 'time' => 'required',
-                'tableNo' => 'required',
+                'tableNo' => 'required', 
                 'noOfPersons' => 'required|not_in:0|gt:0|min:2',
 
             ], [
@@ -407,7 +407,7 @@ class BookingController extends Controller
                 'tableNo.required' => 'Table No should be provided!',
                 'date.required' => 'Date should be provided!',
                 'time.required' => 'Time should be provided!',
-                'noOfPersons.required' => 'Quantity should be provided!',
+                'noOfPersons.required' => 'Quantity should be provided!', 
                 'noOfPersons.not_in' => 'Quantity may not be 0!',
                 'noOfPersons.gt' => 'Quantity may not minus!',
                 'noOfPersons.min' => 'Quantity should be greater than two!',
@@ -508,14 +508,16 @@ class BookingController extends Controller
             'noOfPersons' => 'required|not_in:0|gt:0',
             'date' => 'required',
             'time' => 'required',
-            'address' => 'required',
+            'address'=>'address',
+            
         ], [
             'noOfPersons.required' => 'Quantity should be provided!',
             'date.required' => 'Date should be provided!',
             'time.required' => 'Date should be provided!',
             'noOfPersons.not_in' => 'Quantity may not be 0!',
             'noOfPersons.gt' => 'Quantity may not be minus!',
-            'address.required' => 'Address should be provided!',
+            'address.requires' => 'Address should be provided!',
+           
         ]);
 
         if ($validator->fails()) {
@@ -524,10 +526,10 @@ class BookingController extends Controller
 
         $date = $request['date'];
         $time = $request['time'];
-        $address = $request['address'];
+        
         $todayDate = Carbon::now()->format('Y-m-d');
         $timeNow = Carbon::now()->format('H:i');
-        $time = $request['address'];
+       
 
         if ($date < $todayDate) {
             return response()->json(['error' => 'Invalid date']);
@@ -552,6 +554,7 @@ class BookingController extends Controller
         if ($request['noOfPersons'] > $order->qty) {
             return response()->json(['error' => 'Quantity not available']);
         }
+        
 
         $singleOrder = Order::find($request['hiddenCateringOrderId']);
 

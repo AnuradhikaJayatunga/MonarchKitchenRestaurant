@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: AnuradhikaJayatunga
- * Date: 6/13/20
- * Time: 6:03 PM
- */
+
 
 namespace App;
 

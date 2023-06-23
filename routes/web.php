@@ -69,6 +69,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::get('/place-catering-order', 'BookingController@placeCateringOrder')->name('place-catering-order');
         Route::post('/get-total-cost-with-extra', 'BookingController@getTotalCostWithExtra')->name('get-total-cost-with-extra');
         Route::post('/pay-catering-order', 'BookingController@payCateringOrder')->name('pay-catering-order');
+        //Route::post('/edit-Catering', 'BookingController@editCatering')->name('editCatering');
 
         //reservation order
         Route::get('/reservation-orders', 'BookingController@reservationOrders')->name('reservation-orders');
@@ -191,6 +192,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/get-available-catering-qty', 'CateringOrderController@getAvailableQty')->name('get-available-catering-qty');
         Route::post('save-catering-ingredient', 'CateringOrderController@saveIngredient')->name('save-catering-ingredient');
         Route::post('/save-catering-order', 'CateringOrderController@saveCateringOrder')->name('save-catering-order');
+        Route::post('/edit-catering-order', 'CateringOrderController@editCateringOrder')->name('edit-catering-order');
     });
 
     Route::group(['middleware' => 'admin_sales_person', 'prefix' => ''], function () {
