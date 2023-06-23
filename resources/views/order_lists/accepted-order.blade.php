@@ -64,9 +64,11 @@
                                                    <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
+                                                    
                                                     <td>{{ $order->acceptUser->first_name }}
                                                         {{ $order->acceptUser->last_name }}</td>
                                                     <td>{{ $order->accept_date_time }}</td>
+
                                                     <td>{{ $order->created_at->diffForHumans() }}</td>
                                                     <td>
                                                         @if ($order->type == 'Delivery Order')

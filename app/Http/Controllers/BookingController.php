@@ -217,6 +217,7 @@ class BookingController extends Controller
                 'noOfPersons' => 'required|not_in:0|gt:0',
                 'date' => 'required',
                 'time' => 'required',
+                'address' => 'required',
             ], [
                 'noOfPersons.required' => 'Quantity should be provided!',
                 'date.required' => 'Date should be provided!',
@@ -224,6 +225,7 @@ class BookingController extends Controller
                 'noOfPersons.not_in' => 'c may not be 0!',
                 'noOfPersons.not_in' => 'Quantity may not be 0!',
                 'noOfPersons.gt' => 'Quantity may not be minus!',
+                'address.required' => 'Address should be provided!'
             ]);
 
             if ($validator->fails()) {
@@ -231,6 +233,7 @@ class BookingController extends Controller
             }
             $date = $request['date'];
             $time = $request['time'];
+            $address = $address['address'];
             $cateringOrderStartTime = Carbon::parse('06:00')->format('H:i');
             $cateringOrderEndTime = Carbon::parse('21:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');
@@ -265,7 +268,7 @@ class BookingController extends Controller
             $record = new Order();
             $record->total_cost = $order->price * $request['noOfPersons'];
             $record->name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
-            $record->address = null;
+            $record->address = $address['address'];
             $record->date = $date;
             $record->time = $time;
             $record->extra_item = $request['extraItem'];
@@ -505,12 +508,14 @@ class BookingController extends Controller
             'noOfPersons' => 'required|not_in:0|gt:0',
             'date' => 'required',
             'time' => 'required',
+            'address' => 'required',
         ], [
             'noOfPersons.required' => 'Quantity should be provided!',
             'date.required' => 'Date should be provided!',
             'time.required' => 'Date should be provided!',
             'noOfPersons.not_in' => 'Quantity may not be 0!',
             'noOfPersons.gt' => 'Quantity may not be minus!',
+            'address.required' => 'Address should be provided!',
         ]);
 
         if ($validator->fails()) {
@@ -521,6 +526,7 @@ class BookingController extends Controller
         $time = $request['time'];
         $todayDate = Carbon::now()->format('Y-m-d');
         $timeNow = Carbon::now()->format('H:i');
+        $time = $request['address'];
 
         if ($date < $todayDate) {
             return response()->json(['error' => 'Invalid date']);
@@ -568,6 +574,7 @@ class BookingController extends Controller
             $record->date = $date;
             $record->time = $time;
             $record->extra_item = $request['extraItem'];
+            $record->address = $request['address'];
             $record->type = 'Catering Order';
             $record->no_of_persons = $request['noOfPersons'];
             $record->save();

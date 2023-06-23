@@ -67,6 +67,7 @@
                                         <span class="text-danger" id="noOfPersonsError"></span>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Date<span class="text-danger"> *</span></label>
@@ -75,12 +76,23 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Time<span class="text-danger"> *</span></label>
                                         <input type="time" class="form-control" name="time" id="time" />
                                         <span class="text-danger" id="timError"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Address<span class="text-danger"> *</span></label>
+                                        <input type="address" class="form-control" name="adress" id="address" />
+                                        <span class="text-danger" id="addressError"></span>
                                     </div>
                                 </div>
                             </div>
@@ -137,21 +149,23 @@
         $("#error").html('');
         $("#dateError").html('');
         $("#timError").html('');
+        $("#addressError").html('');
 
         var noOfPersons = $("#noOfPersons").val();
-        var extraItem = $("#extraItem").val();
+        //var extraItem = $("#extraItem").val();
         var date = $("#date").val();
         var time = $("#time").val();
+        var address = $("#address").val();
         var cateringItemId = $("#cateringItemId").val();
-        var extraItem = $("#extraItem").val();
+        //var extraItem = $("#extraItem").val();
 
         $.post('pay-catering-order', {
             noOfPersons: noOfPersons,
-            extraItem: extraItem,
+            address: address,
             date: date,
             time: time,
             cateringItemId: cateringItemId,
-            extraItem: extraItem
+            //extraItem: extraItem
         }, function(data) {
             if (data.error) {
                 var p = document.getElementById('error');
@@ -170,6 +184,8 @@
                     var p = document.getElementById('timError');
                     p.innerHTML = data.errors.time[0];
                 }
+
+               
             }
             if (data.success) {
                 notify({
