@@ -316,7 +316,7 @@
             time: time,
             adddres: address,
             hiddenCateringOrderId: hiddenCateringOrderId,
-            cateringItemId: cateringItemId
+            cateringItemId: cateringItemId,
         }, function(data) {
 
             if (data.error) {

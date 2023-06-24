@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: AnuradhikaJayatunga
- * Date: 6/12/20
- * Time: 7:57 PM
- */
-
 namespace App\Http\Controllers;
 
 

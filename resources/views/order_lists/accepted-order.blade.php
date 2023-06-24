@@ -43,9 +43,9 @@
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
                                         <th>Date</th>
+                                        <th>Time</th>
                                         <th>Accepted Person</th>
                                         <th>Accepted Date and Time</th>
-                                        <th>Time</th>
                                         <th>Option</th>
                                     </tr>
                                 </thead>
@@ -64,14 +64,15 @@
                                                    <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>{{ $order->date }}</td>
+                                                    <td>{{ $order->created_at->diffForHumans() }}</td>
                                                     
                                                     <td>{{ $order->acceptUser->first_name }}
                                                         {{ $order->acceptUser->last_name }}</td>
                                                     <td>{{ $order->accept_date_time }}</td>
 
-                                                    <td>{{ $order->created_at->diffForHumans() }}</td>
+                                                    
                                                     <td>
-                                                        @if ($order->type == 'Delivery Order')
+                                                        @if ($order->type == 'Delivery Order'||'Catering Order')
                                                             <div class="dropdown">
                                                                 <button
                                                                     class="btn btn-success waves-effect btn-sm dropdown-toggle"

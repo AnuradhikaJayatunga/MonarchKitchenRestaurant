@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Null_;
+//use phpDocumentor\Reflection\Types\Null_;
 
 class BookingController extends Controller
 {
@@ -235,7 +235,7 @@ class BookingController extends Controller
             }
             $date = $request['date'];
             $time = $request['time'];
-            $address = $address['address'];
+            $address = $request['address'];
             $cateringOrderStartTime = Carbon::parse('06:00')->format('H:i');
             $cateringOrderEndTime = Carbon::parse('21:00')->format('H:i');
             $todayDate = Carbon::now()->format('Y-m-d');

@@ -12,9 +12,11 @@ class TaskController extends Controller
 {
         public function pendingTasks(){
 
-            $assignWorks=MasterBooking::where('status',2)->where('driver',Auth::user()->iduser_master)->get();
-            return view('driver_task.pending-tasks',['title'=>'Pending Tasks','assignWorks'=>$assignWorks]);
-        }
+            $assignWorks=MasterBooking::where('status',2)->where('admin',Auth::user()->iduser_master)->get();
+            return view('driver_task.pending-task',['title'=>'Pending Tasks','assignWorks'=>$assignWorks]);
+
+            }
+
         public function completedTasks(){
             if (Auth::user()->user_role_iduser_role == 1){
                 $assignWorks=MasterBooking::where('status',3)->get();
