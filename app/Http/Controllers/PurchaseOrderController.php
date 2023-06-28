@@ -101,6 +101,7 @@ class PurchaseOrderController extends Controller
             $item = $request['item'];
             $qtyGrn = $request['qtyGrn'];
             $bPrice = $request['bPrice'];
+           
 
             $rules = \Validator::make($request->all(), [
 
@@ -108,6 +109,7 @@ class PurchaseOrderController extends Controller
                 'item' => 'required',
                 'qtyGrn' => 'required||not_in:0',
                 'bPrice' => 'required||not_in:0',
+              
 
             ], [
                 'item.required' => 'Product should be provided!',
@@ -115,6 +117,7 @@ class PurchaseOrderController extends Controller
                 'qtyGrn.not_in' => 'Qty should be  more than 0!',
                 'bPrice.required' => 'Buying Price should be provided!',
                 'bPrice.not_in' => 'Buying Price should be  more than 0!',
+                
 
             ]);
             if ($rules->fails()) {

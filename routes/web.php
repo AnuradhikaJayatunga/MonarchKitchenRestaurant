@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::get('/get-reservation-table', 'BookingController@getReservationTable')->name('get-reservation-table');
         Route::post('/add-reservation-item', 'BookingController@addReservationItem')->name('add-reservation-item');
         Route::post('/save-reservation', 'BookingController@saveReservation')->name('save-reservation');
-        Route::post('/edit-catering', 'BookingController@editCatering')->name('edit-catering');
+        Route::post('/edit-catering-order', 'BookingController@editCateringOrder')->name('edit-catering-order');
         
 
         Route::get('/pending-order-customer', 'OrderController@pendingOrderCustomer')->name('pending-order-customer');

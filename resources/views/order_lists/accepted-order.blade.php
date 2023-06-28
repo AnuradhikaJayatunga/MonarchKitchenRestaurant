@@ -227,7 +227,7 @@
                 title: 'Do you really want to complte this order?',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, Approved!',
+                confirmButtonText: 'Yes, Complted!',
                 cancelButtonText: 'No, cancel!',
                 confirmButtonClass: 'btn btn-md btn-outline-primary waves-effect',
                 cancelButtonClass: 'btn btn-md btn-outline-danger waves-effect',
