@@ -59,7 +59,8 @@
                                                             data-id="{{ $order->idorder }}" id="orderId"
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ $order->total_cost }}</td>
-                                                    <td>{{ $order->driver }}</td>
+                                                    <td>{{ $order->User->first_name }}
+                                                        {{ $order->User->last_name }}</td> 
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>
                                                         @if (\Illuminate\Support\Facades\Auth::user()->user_role_iduser_role == 2)

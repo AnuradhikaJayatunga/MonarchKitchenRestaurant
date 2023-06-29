@@ -59,8 +59,10 @@
                                                             data-id="{{ $order->idorder }}" id="orderId"
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ $order->total_cost }}</td>
+                                                    <td>{{ $order->User->first_name }}
+                                                        {{ $order->User->last_name }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
-                                                    <td>{{ $order->driver }}</td>
+                                                   
                                                     <td>
 
                                                         <div class="dropdown">
