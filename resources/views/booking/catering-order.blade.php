@@ -25,13 +25,13 @@
 
 <div class="page-content-wrapper">
 
-    <div class="container-fluid">
+    <div class="card">
         <div class="row">
             @foreach ($orders as $order)
                 <a href="{{ route('place-catering-order', ['idOrder' => $order->idcatering_order_items]) }}">
                     <div class="col-lg-3" style="padding-bottom: 50px">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" height="250"
+                        <div class="card" style="width: 20rem;">
+                            <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" height="auto"
                                 alt="Card image cap">
 
                             <div class="card-body">
@@ -45,7 +45,7 @@
                                                 {{ number_format($order->qty, 2) }}</b></p>
                                     </div> --}}
                                     <div class="col-lg-12">
-                                        <p style="color:black"> {{ $order->description }}</p>
+                                        <p style="color:black;text-align:justify"> {{ $order->description }}</p>
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-primary btn-block">Order Now</button>

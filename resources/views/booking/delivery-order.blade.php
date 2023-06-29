@@ -2,7 +2,7 @@
 @include('includes/header_end')
 
 <!-- Page title -->
-<ul class="list-inline menu-left mb-0">
+<ul class="list-inline menu-center mb-0">
     <li class="list-inline-item">
         <button type="button" class="button-menu-mobile open-left waves-effect">
             <i class="ion-navicon"></i>
@@ -25,7 +25,7 @@
 
 <div class="page-content-wrapper">
 
-    <div class="container-fluid">
+    <div class="card">
         <div class="row">
             @foreach ($orders as $order)
                 @if ($order->qty == 0)
@@ -34,7 +34,7 @@
                         <a href="#" onclick="addToCart({{ $order->iddelivery_order_items }})">
                 @endif
 
-                <div class="col-lg-3" style="padding-bottom: 60px">
+                <div class="col-lg-6" style="padding-bottom: 60px">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" alt="Card image cap"
                             height="250">

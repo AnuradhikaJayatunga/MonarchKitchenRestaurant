@@ -42,6 +42,7 @@
                                         <th>Items</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
+                                        <th>Driver</th>
                                         <th>Date</th>
                                         <th>Accepted Person</th>
                                         <th>Accepted Date and Time</th>
@@ -62,6 +63,7 @@
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
+                                                    <td>{{ $order->driver }}</td>
                                                     <td>{{ $order->date }}</td>
                                                     <td>{{ $order->acceptUser->first_name }}
                                                         {{ $order->acceptUser->last_name }}</td>

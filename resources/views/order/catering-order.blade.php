@@ -106,8 +106,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Description</label>
-                                    <textarea class="form-control form-control-lg" id="description" name='description'></textarea>
+        
+                                        <label for="example-text-input" class="col-form-label">Description</label>
+                                        <textarea class="form-control form-control-lg" id="description" name='description'></textarea>
+                                   
                                 </div>
                             </div>
                         </div>
