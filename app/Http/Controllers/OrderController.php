@@ -46,8 +46,17 @@ class OrderController extends Controller
 
     public function tasks()
     {
-        $orders = Order::where('is_task_completed', 0)->where('driver_id', Auth::user()->iduser_master)->get();
-        return view('tasks.tasks', ['title' => 'Tasks', 'orders' => $orders]);
+        if (Auth::user()->user_role_iduser_role == 1){
+            $orders = Order::where('is_task_completed', 0)->where('driver_id', '!=',null)->where('type','!=','Reservation Order')->get();
+        return view('tasks.tasks', ['title' => 'Pending Tasks', 'orders' => $orders]);
+        }
+       
+        else{
+            $orders = Order::where('is_task_completed', 0)->where('driver_id', Auth::user()->iduser_master)->get();
+            return view('tasks.tasks', ['title' => 'Pending Tasks', 'orders' => $orders]);
+        }
+        
+        
     }
 
     public function completedTasks()

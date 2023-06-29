@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
 
 class BookingController extends Controller
-{
+{ 
     public function deliveryOrder()
     {
         $orders = DeliveryOrderItems::get();

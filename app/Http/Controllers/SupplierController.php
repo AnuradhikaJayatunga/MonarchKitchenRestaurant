@@ -35,7 +35,7 @@ class SupplierController extends Controller
         } catch (Exception $exception) {
             DB::rollBack();
             throw $exception;
-        }
+        } 
     }
 
     public function store(Request $request)

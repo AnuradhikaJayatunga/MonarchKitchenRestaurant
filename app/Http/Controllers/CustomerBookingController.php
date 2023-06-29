@@ -216,10 +216,12 @@ class CustomerBookingController extends Controller
 
             'uProduct' => 'required',
             'uQty' => 'required||not_in:0',
+            'uAddress'=>'required',
         ], [
             'uProduct.required' => 'Product should be provided!',
             'uQty.required' => 'Qty should be provided!',
             'uQty.not_in' => 'Qty should be more than 0!',
+            'uAddress.required'=> 'Address should be provided!',
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);

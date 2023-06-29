@@ -299,8 +299,8 @@
         $("#error").html('');
         $("#dateError").html('');
         $("#timError").html('');
-        $("#adddressError").html('');
-
+        $("#addressError").html('');
+        
 
         var noOfPersons = $("#noOfPersons").val();
         var date = $("#date").val();
@@ -308,13 +308,13 @@
         var address = $("#address").val();
         var hiddenCateringOrderId = $("#hiddenCateringOrderId").val();
         var cateringItemId = $("#cateringItemId").val();
-
+        
 
         $.post('editCatering', {
             noOfPersons: noOfPersons,
             date: date,
             time: time,
-            adddres: address,
+            address: address,
             hiddenCateringOrderId: hiddenCateringOrderId,
             cateringItemId: cateringItemId,
         }, function(data) {

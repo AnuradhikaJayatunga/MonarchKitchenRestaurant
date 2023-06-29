@@ -62,7 +62,7 @@
                                                     <td>{{ $order->driver }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>
-
+                                                        @if (\Illuminate\Support\Facades\Auth::user()->user_role_iduser_role == 2)
                                                         <div class="dropdown">
                                                             <button
                                                                 class="btn btn-success waves-effect btn-sm dropdown-toggle"
@@ -90,6 +90,7 @@
                                                             </div>
 
                                                         </div>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
