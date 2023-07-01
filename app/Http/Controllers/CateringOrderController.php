@@ -203,6 +203,7 @@ class CateringOrderController extends Controller
         }
     }
 
+
     public function deleteCateringIngredient(Request $request)
     {
         DB::beginTransaction();
@@ -216,4 +217,5 @@ class CateringOrderController extends Controller
             throw $e;
         }
     }
-}
+
+    }

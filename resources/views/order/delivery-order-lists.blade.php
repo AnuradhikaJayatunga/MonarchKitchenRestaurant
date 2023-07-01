@@ -36,8 +36,9 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>Quantity</th>
+                                        <th>Available Quantity</th>
                                         <th>Price</th>
+                                        <th>Option</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,7 +54,21 @@
                                                     <td>{{ $order->name }}</td>
                                                     <td>{{ $order->qty }}</td>
                                                     <td>{{ number_format($order->item_price, 2) }}</td>
-
+                                                    <td>
+                                                    <p>
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-warning  waves-effect waves-light"
+                                                                data-toggle="modal"
+                                                                data-id="{{ $order->id }}" id="uItemId"
+                                                                data-target="#updateItem"><i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                onclick="deleteDeliveryOrderItems({{ $order->id }})"
+                                                                class="btn btn-sm btn-danger  waves-effect waves-light"><i
+                                                                    class="fa fa-trash"></i>
+                                                            </button>
+                                                        </p>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @endif
@@ -70,70 +85,6 @@
 </div>
 
 
-<!--add supplier model-->
-<div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mt-0">Add Supplier</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger alert-dismissible " id="errorAlert" style="display:none">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="example-text-input" class="col-form-label">Supplier Name<span style="color: red">
-                                *</span></label>
-                        <input type="text" class="form-control" name="supplierName" id="supplierName" required
-                            placeholder="Supplier Name" />
-                    </div>
-                    <div class="col-lg-6">
-
-                        <label for="example-text-input" class="col-form-label">Contact No<span style="color: red">
-                                *</span></label>
-                        <input type="number" class="form-control" name="contactNo1"
-                            oninput="this.value = Math.abs(this.value)" id="contactNo1" required
-                            placeholder="(+94) XXX XXXXXX" />
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label for="example-text-input" class="col-form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" required
-                            placeholder="abc@gmail.com" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 form-group">
-                        <label for="example-text-input" class="col-form-label">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" required
-                            placeholder="Address" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 ">
-                        <button type="button" class="btn btn-primary waves-effect " onclick="saveSupplier()">
-                            Save Supplier</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 @include('includes/footer_start')
 <script type="text/javascript">
     $(document).ready(function() {
@@ -147,5 +98,70 @@
     $(document).on('focus', ':input', function() {
         $(this).attr('autocomplete', 'off');
     });
+
+
+    function deleteDeliveryOrderItems (id) {
+        swal({
+                title: 'Do you really want to delete this Item?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Cancel!',
+                cancelButtonText: 'No!',
+                confirmButtonClass: 'btn btn-md btn-outline-primary waves-effect',
+                cancelButtonClass: 'btn btn-md btn-outline-danger waves-effect',
+                buttonsStyling: false
+            }).then(function() {
+                $.ajax({
+
+                    type: 'POST',
+
+                    url: " {{ route('deleteDeliveryOrderItems') }}",
+
+                    data: {
+                        id: id
+                    },
+
+                    success: function(data) {
+                        if (data.error) {
+                            notify({
+                                type: "error", //alert | success | error | warning | info
+                                title: 'Sorry',
+                                autoHide: true, //true | false
+                                delay: 2500, //number ms
+                                position: {
+                                    x: "right",
+                                    y: "top"
+                                },
+                                icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
+
+                                message: data.error,
+                            });
+                        }
+                        if (data.success) {
+                            notify({
+                                type: "success", //alert | success | error | warning | info
+                                title: 'ITEM DELETED',
+                                autoHide: true, //true | false
+                                delay: 2500, //number ms
+                                position: {
+                                    x: "right",
+                                    y: "top"
+                                },
+                                icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
+
+                                message: data.success,
+                            });
+                            location.reload();
+                        }
+
+                    }
+                })
+
+
+            }),
+            function() {
+
+            }
+    }
 </script>
 @include('includes.footer_end')

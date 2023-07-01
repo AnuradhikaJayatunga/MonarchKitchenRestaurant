@@ -88,7 +88,13 @@
                                                                     @endif
 
                                                                     </a>
-
+                                                                    @if ($order->type == 'Catering Order')
+                                                                    <a href="#" class="dropdown-item"
+                                                                            data-toggle="modal"
+                                                                            data-id="{{ $order->idorder }}"
+                                                                            id="deleteCatering"
+                                                                            data-target="#cateringDelete">Delete</i>
+                                                                    @endif
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -401,6 +407,70 @@
                             message: data.success,
                         });
                         location.reload();
+                    }
+                })
+
+
+            }),
+            function() {
+
+            }
+    }
+
+    function deleteCatering(idorder) {
+        swal({
+                title: 'Do you really want to delete this Order?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Cancel!',
+                cancelButtonText: 'No!',
+                confirmButtonClass: 'btn btn-md btn-outline-primary waves-effect',
+                cancelButtonClass: 'btn btn-md btn-outline-danger waves-effect',
+                buttonsStyling: false
+            }).then(function() {
+                $.ajax({
+
+                    type: 'POST',
+
+                    url: " {{ route('deleteCatering') }}",
+
+                    data: {
+                        idorder: idorder
+                    },
+
+                    success: function(data) {
+                        if (data.error) {
+                            notify({
+                                type: "error", //alert | success | error | warning | info
+                                title: 'Sorry',
+                                autoHide: true, //true | false
+                                delay: 2500, //number ms
+                                position: {
+                                    x: "right",
+                                    y: "top"
+                                },
+                                icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
+
+                                message: data.error,
+                            });
+                        }
+                        if (data.success) {
+                            notify({
+                                type: "success", //alert | success | error | warning | info
+                                title: 'ORDER DELETED',
+                                autoHide: true, //true | false
+                                delay: 2500, //number ms
+                                position: {
+                                    x: "right",
+                                    y: "top"
+                                },
+                                icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
+
+                                message: data.success,
+                            });
+                            location.reload();
+                        }
+
                     }
                 })
 

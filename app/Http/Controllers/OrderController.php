@@ -114,6 +114,7 @@ class OrderController extends Controller
         }
     }
 
+
     public function viewOrderItems(Request $request)
     {
         $order = Order::find($request['id']);
@@ -151,6 +152,7 @@ class OrderController extends Controller
             return response()->json(['data' => $tableData]);
         }
     }
+
 
     public function approvedOrder(Request $request)
     {

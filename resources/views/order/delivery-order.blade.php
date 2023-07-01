@@ -316,11 +316,11 @@
                     });
                     setTimeout(function() {
                         location.reload();
-                    }, 200);
+                    },200);
                 }
             }
         });
-    });
+    });   
 </script>
 
 
