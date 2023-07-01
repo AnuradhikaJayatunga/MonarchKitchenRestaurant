@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>Quantity</th>
+                                        <th>Available Quantity</th>
                                         <th>Price</th>
                                     </tr>
                                 </thead>

@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/get-total-cost-with-extra', 'BookingController@getTotalCostWithExtra')->name('get-total-cost-with-extra');
         Route::post('/pay-catering-order', 'BookingController@payCateringOrder')->name('pay-catering-order');
         Route::post('/editCatering', 'BookingController@editCatering')->name('editCatering');
+        Route::post('/deleteCatering', 'BookingController@deleteCatering')->name('deleteCatering');
                 
         //reservation order
         Route::get('/reservation-orders', 'BookingController@reservationOrders')->name('reservation-orders');
@@ -187,7 +188,8 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/get-available-qty', 'DeliveryOrderController@getAvailableQty')->name('get-available-qty');
         Route::post('/save-ingredient', 'DeliveryOrderController@saveIngredient')->name('save-ingredient');
         Route::post('/save-delivery-order', 'DeliveryOrderController@saveDeliveryOrder')->name('save-delivery-order');
-        Route::post('/delete-delivery-ingredient', 'DeliveryOrderController@deleteDeliveryIngredient')->name('delete-delivery-ingredient');
+        Route::post('/edit-delivery-order', 'DeliveryOrderController@editDeliveryOrder')->name('edit-delivery-order');
+        Route::post('/delete-delivery-order-items', 'DeliveryOrderController@deleteDeliveryOrderItems')->name('delete-delivery-order-items');
 
         Route::get('/catering-order-lists', 'CateringOrderController@dcateringOrderLists')->name('catering-order-lists');
         Route::post('/delete-catering-ingredient', 'CateringOrderController@deleteCateringIngredient')->name('delete-catering-ingredient');
