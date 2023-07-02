@@ -466,7 +466,7 @@
                 title: 'Do you really want to delete this supplier?',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, Cancel!',
+                confirmButtonText: 'Yes, Delete!',
                 cancelButtonText: 'No!',
                 confirmButtonClass: 'btn btn-md btn-outline-primary waves-effect',
                 cancelButtonClass: 'btn btn-md btn-outline-danger waves-effect',

@@ -122,7 +122,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/updateProduct', 'ProductController@update')->name('updateProduct');
         Route::post('/updateItemImage', 'ProductController@imageUpdate')->name('updateItemImage');
 
-
+ 
         //PO
         Route::get('/add-po', 'PurchaseOrderController@addPoIndex')->name('add-po');
         Route::post('/getPOTempTableData', 'PurchaseOrderController@getPOTempTableData')->name('getPOTempTableData');
@@ -189,7 +189,8 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/save-ingredient', 'DeliveryOrderController@saveIngredient')->name('save-ingredient');
         Route::post('/save-delivery-order', 'DeliveryOrderController@saveDeliveryOrder')->name('save-delivery-order');
         Route::post('/edit-delivery-order', 'DeliveryOrderController@editDeliveryOrder')->name('edit-delivery-order');
-        Route::post('/delete-delivery-order-items', 'DeliveryOrderController@deleteDeliveryOrderItems')->name('delete-delivery-order-items');
+        Route::post('/deleteOrderItems', 'DeliveryOrderController@deleteOrderItems')->name('deleteOrderItems');
+        Route::post('update-item',  'DeliveryOrderController@updateItem')->name('update-item');
 
         Route::get('/catering-order-lists', 'CateringOrderController@dcateringOrderLists')->name('catering-order-lists');
         Route::post('/delete-catering-ingredient', 'CateringOrderController@deleteCateringIngredient')->name('delete-catering-ingredient');

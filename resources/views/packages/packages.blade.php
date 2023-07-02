@@ -151,7 +151,7 @@
 </div>
 
 
-<!--update supplier-->
+<!--update package-->
 <div class="modal fade" id="updatePackage" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-md">

@@ -7,6 +7,7 @@ use App\CateringOrderIngrediantTemp;
 use App\DeliveryOrderIngrediant;
 use App\DeliveryOrderIngrediantTemp;
 use App\DeliveryOrderItems;
+use App\Order;
 use App\Product;
 use App\Stock;
 use Exception;
@@ -14,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+
+use function PHPSTORM_META\type;
 
 class DeliveryOrderController extends Controller
 {
@@ -135,6 +138,40 @@ class DeliveryOrderController extends Controller
             DB::rollBack();
             throw $e;
         }
+    }
+
+    // Public function deleteDeliveryOrderItems(Request $request)
+    // {
+
+    //     DB::beginTransaction();
+    //     try{
+    //         $record = DeliveryOrderItems::find($request['id']);
+    //         $record->delete();
+    //         DB::commit();
+    //     }catch (Exception $e){
+    //         DB::rollBack();
+    //         throw $e;
+    //     }
+
+    // }
+
+
+    public function deleteOrderItems(Request $request)
+    {
+        $isOrderItemsUsed = Order::where('Order_idorder_items', $request['id'])->exists();
+        if ($isOrderItemsUsed) {
+            return response()->json(['error' => 'Item used in Order']);
+        }
+        DB::beginTransaction();
+        try {
+            $record = Order::find($request['id']);
+            $record->delete();
+            DB::commit();
+            return response()->json(['success' => 'Item deleted successfully']);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            throw $exception;
+        } 
     }
 
     public function saveDeliveryOrder(Request $request)
