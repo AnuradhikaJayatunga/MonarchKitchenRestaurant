@@ -59,11 +59,11 @@
                                                             <button type="button"
                                                                 class="btn btn-sm btn-warning  waves-effect waves-light"
                                                                 data-toggle="modal"
-                                                                data-id="{{ $order->idorder_items }}" id="uOrderItemId"
+                                                                data-id="{{ $order->iddelivery_order_items  }}" id="uOrderItemId"
                                                                 data-target="#updateItem"><i class="fa fa-edit"></i>
                                                             </button>
                                                             <button type="button"
-                                                                onclick="deleteOrderItems({{ $order->idorder_items }})"
+                                                                onclick="deleteOrderItems({{ $order->iddelivery_order_items  }})"
                                                                 class="btn btn-sm btn-danger  waves-effect waves-light"><i
                                                                     class="fa fa-trash"></i>
                                                             </button>
@@ -84,15 +84,15 @@
     </div>
 </div>
 
-<!--update delivery orders list-->
-<div class="modal fade" id="updatePackage" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+<!--update supplier-->
+<div class="modal fade" id="updateItem" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Edit Order Items</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                </button>
+                <h5 class="modal-title mt-0">Edit Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button> 
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -103,52 +103,45 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Item Name<span style="color: red">
-                                    *</span></label>
-                            <input type="text" class="form-control" name="uItemName" id="uItemName" required
-                                placeholder="Item Name" />
+                            <label for="example-text-input" class="col-form-label">Item Name<span
+                                    style="color: red"> *</span></label>
+                            <input type="text" class="form-control" name="uItemName" id="uItemName"
+                                required placeholder="Item Name" />
                         </div>
                     </div>
-
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Item Price<span style="color: red">
-                                    *</span></label>
-                            <input type="text" class="form-control" name="uItemPrice" id="uItemPrice" required
+                            <label for="example-text-input" class="col-form-label">Item Price<span
+                                style="color: red"> *</span></label>
+                            <input type="text" class="form-control" name="uItemPrice" id="uItemPrice"
                                 placeholder="Item Price" />
                         </div>
                     </div>
-
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Qty<span style="color: red">
-                                    *</span></label>
-                            <input type="text" class="form-control" name="uQty" id="uQty" required
-                                placeholder="Item Qty" />
+                            <label for="example-text-input" class="col-form-label">Quantity<span
+                                style="color: red"> *</span></label>
+                            <input type="text" class="form-control" name="uQuantity" id="uQuantity"
+                                placeholder="Quantity" />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4">
+                    <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="example-text-input" class="col-form-label">Image<span
-                                        style="color: red">
-                                        *</span></label>
-
+                                <label for="example-text-input" class="col-form-label">Image</label>
                                 <input class="form-control form-control-lg" id="uImage" name='uImage'
                                     type="file" />
                                 <span id="imageError" class="text-danger"></span>
                             </div>
-                        </div>
                     </div>
-
                 </div>
                 <input id="hiddenOrderItemId" type="hidden">
                 <div class="row">
                     <div class="col-lg-4">
-                        <button type="submit" class="btn btn-warning waves-effect " onclick="updateOrderItems()">
+                        <button type="submit" class="btn btn-warning waves-effect " onclick="updateOrderItem()">
                             Update Item</button>
+
                     </div>
                 </div>
             </div>
@@ -204,7 +197,6 @@
     
 
     $.post('updateOrderItems', {
-        uName: uName,
         hiddenOrderItemId: hiddenOrderItemId,
         uItemName:uItemName,
         uItemPrice:uItemPrice,
@@ -266,6 +258,7 @@ function deleteOrderItems(id) {
                     },
 
                     success: function(data) {
+                        console.log(data)
                         if (data.error) {
                             notify({
                                 type: "error", //alert | success | error | warning | info

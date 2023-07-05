@@ -189,13 +189,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <label>Description</label>
-                        <textarea class="form-control" rows="3" required name="description" id="description"
-                            placeholder="Write some description here...."></textarea>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-4" style="padding-top: 14px">
                         <button type="button" class="btn btn-primary waves-effect " onclick="saveProduct()">
                             Save Product</button>
@@ -261,14 +254,6 @@
                                 oninput="this.value = Math.abs(this.value)" id="uRequiredQty" required
                                 placeholder="0.00" />
                             <span class="text-danger" id="uRequiredQtyError"></span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label>Description</label>
-                            <textarea class="form-control" rows="3" required name="uDescription" id="uDescription"
-                                placeholder="Write some description here...."></textarea>
                         </div>
                     </div>
                 </div>

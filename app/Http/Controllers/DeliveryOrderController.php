@@ -8,6 +8,7 @@ use App\DeliveryOrderIngrediant;
 use App\DeliveryOrderIngrediantTemp;
 use App\DeliveryOrderItems;
 use App\Order;
+use App\OrderItems;
 use App\Product;
 use App\Stock;
 use Exception;
@@ -140,31 +141,28 @@ class DeliveryOrderController extends Controller
         }
     }
 
-    // Public function deleteDeliveryOrderItems(Request $request)
-    // {
-
-    //     DB::beginTransaction();
-    //     try{
-    //         $record = DeliveryOrderItems::find($request['id']);
-    //         $record->delete();
-    //         DB::commit();
-    //     }catch (Exception $e){
-    //         DB::rollBack();
-    //         throw $e;
-    //     }
-
-    // }
-
 
     public function deleteOrderItems(Request $request)
     {
-        $isOrderItemsUsed = Order::where('Order_idorder_items', $request['id'])->exists();
+        $order=DeliveryOrderItems::find($request['id']);
+        $isOrderItemsUsed = OrderItems::where('id',$order->iddelivery_order_items)->first();
         if ($isOrderItemsUsed) {
-            return response()->json(['error' => 'Item used in Order']);
-        }
+            $isorderexist = Order::find($isOrderItemsUsed->order_idorder );
+            if($isorderexist)
+            {
+                if($isorderexist->type!='Catering Order')
+            {
+                return response()->json(['error' => 'Item used in Order']);  
+            }   
+            }    
+           
+            }
+       
+        
         DB::beginTransaction();
         try {
-            $record = Order::find($request['id']);
+            $record = DeliveryOrderItems::find($request['id']);
+            DeliveryOrderIngrediant::where('delivery_order_items_iddelivery_order_items',$record->iddelivery_order_items)->delete();
             $record->delete();
             DB::commit();
             return response()->json(['success' => 'Item deleted successfully']);
@@ -263,7 +261,7 @@ class DeliveryOrderController extends Controller
         try {
             $uItemName = $request['uItemName'];
             $uItemPrice = $request['uItemPrice'];
-            $uQty = $request['uQty'];
+            $uQuantity = $request['uQuantity'];
             $hiddenOrderItemId = $request['hiddenOrderItemId'];
             
 
@@ -271,12 +269,12 @@ class DeliveryOrderController extends Controller
 
                 'uItemName' => 'required',
                 'uItemPrice' => 'required',
-                'uQty' => 'required',
+                'uQuantity' => 'required',
 
             ], [
                 'uItemName.required' => 'Item Name should be provided!',
                 'uItemPrice.required' => 'Item Price must be less than 255 characters long.',
-                'uQty.required' => 'Qty should be provided!',   
+                'uQuantity.required' => 'Quantity should be provided!',   
                 
             ]);
 
@@ -287,7 +285,7 @@ class DeliveryOrderController extends Controller
             $updateOrderItems = Order::find($hiddenOrderItemId);
             $updateOrderItems->item_name = $uItemName;
             $updateOrderItems->item_price = $uItemPrice;
-            $updateOrderItems->qty= $uQty;
+            $updateOrderItems->qty= $uQuantity;
                         
             $updateOrderItems->update();
             DB::commit();

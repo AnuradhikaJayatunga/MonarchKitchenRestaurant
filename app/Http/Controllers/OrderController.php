@@ -104,6 +104,21 @@ class OrderController extends Controller
             $id = $request['id'];
 
             $order = Order::find($id);
+            $orderItems = OrderItems::where('order_idorder',$id)->first();
+            if($order->type=='Reservation Order'){
+                $updateqty= DeliveryOrderItems::find($orderItems->id);
+                $updateqty->qty+=$orderItems->qty;
+                $updateqty->save();
+            }else if($order->type=='Catering Order'){
+                $updateqty= CateringOrderItems::find($orderItems->id);
+                $updateqty->qty+=$orderItems->qty;
+                $updateqty->save();
+            }else {
+                $updateqty= DeliveryOrderItems::find($orderItems->id);
+                $updateqty->qty+=$orderItems->qty;
+                $updateqty->save();
+            }
+
             $order->status = 3;
             $order->save();
             DB::commit();
