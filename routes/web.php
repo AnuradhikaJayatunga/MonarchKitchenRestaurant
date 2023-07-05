@@ -190,7 +190,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
         Route::post('/save-delivery-order', 'DeliveryOrderController@saveDeliveryOrder')->name('save-delivery-order');
         Route::post('/edit-delivery-order', 'DeliveryOrderController@editDeliveryOrder')->name('edit-delivery-order');
         Route::post('/deleteOrderItems', 'DeliveryOrderController@deleteOrderItems')->name('deleteOrderItems');
-        Route::post('updateOrderItems',  'DeliveryOrderController@updateOrderItems')->name('updateOrderItems');
+        Route::post('/updateOrderItems',  'DeliveryOrderController@updateOrderItems')->name('updateOrderItems');
 
         Route::get('/catering-order-lists', 'CateringOrderController@dcateringOrderLists')->name('catering-order-lists');
         Route::post('/delete-catering-ingredient', 'CateringOrderController@deleteCateringIngredient')->name('delete-catering-ingredient');

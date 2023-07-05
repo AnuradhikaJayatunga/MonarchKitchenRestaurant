@@ -43,6 +43,7 @@
                                         placeholder="Search by name" />
                                 </div>
                             </div>
+                            
                             <div class="col-lg-4">
                                 <input type="input" class="form-control" name="contact_no" id="contact_no"
                                     placeholder="Contact No">
@@ -52,8 +53,15 @@
                                     placeholder="Address">
                             </div>
                             <div class="col-lg-4">
-                                <input type="input" class="form-control" name="status" id="status"
-                                    placeholder="Status">
+                                <div class="form-group">
+
+                                    <select class="select2" id="status" name="status">
+                                        <option selected disabled>Select Status</option>
+                                        <option value="1">ACTIVE</option>
+                                        <option value="0">INACTIVE</option>
+                                        
+                                    </select>                                
+                                </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group row">
