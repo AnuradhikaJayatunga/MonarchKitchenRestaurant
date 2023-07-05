@@ -256,4 +256,46 @@ class DeliveryOrderController extends Controller
             throw $e;
         }
     }
+
+    public function updateOrderItems(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $uItemName = $request['uItemName'];
+            $uItemPrice = $request['uItemPrice'];
+            $uQty = $request['uQty'];
+            $hiddenOrderItemId = $request['hiddenOrderItemId'];
+            
+
+            $validator = \Validator::make($request->all(), [
+
+                'uItemName' => 'required',
+                'uItemPrice' => 'required',
+                'uQty' => 'required',
+
+            ], [
+                'uItemName.required' => 'Item Name should be provided!',
+                'uItemPrice.required' => 'Item Price must be less than 255 characters long.',
+                'uQty.required' => 'Qty should be provided!',   
+                
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()->all()]);
+            }
+
+            $updateOrderItems = Order::find($hiddenOrderItemId);
+            $updateOrderItems->item_name = $uItemName;
+            $updateOrderItems->item_price = $uItemPrice;
+            $updateOrderItems->qty= $uQty;
+                        
+            $updateOrderItems->update();
+            DB::commit();
+            return response()->json(['success' => 'Item updated successfully']);
+        } catch (Exception $th) {
+            DB::rollBack();
+            throw $th;
+        }
+    }
+
 }

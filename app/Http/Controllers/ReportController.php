@@ -51,6 +51,7 @@ class ReportController extends Controller
         $name = $request['name'];
         $contactNo = $request['contact_no'];
         $address = $request['address'];
+        $status = $request['status'];
 
         $query = User::query();
 
@@ -62,6 +63,9 @@ class ReportController extends Controller
         }
         if (!empty($address)) {
             $query = $query->where('address', 'LIKE', '%' . $address . '%');
+        }
+        if (!empty($status)) {
+            $query = $query->where('status', 'LIKE', '%' . $status . '%');
         }
 
         $customers = $query->get();

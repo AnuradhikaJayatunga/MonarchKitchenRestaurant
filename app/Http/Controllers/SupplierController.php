@@ -54,7 +54,7 @@ class SupplierController extends Controller
 
                 'supplierName' => 'required|max:45',
                 'contactNo1' => 'required|min:9|max:9',
-               'bankName' => 'required|max:45',
+                'bankName' => 'required|max:45',
                 'accountNo' => 'required|min:15||max:25',
             ], [
                 'supplierName.required' => 'Supplier Name should be provided!',

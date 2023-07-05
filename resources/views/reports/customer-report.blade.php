@@ -30,7 +30,6 @@
 
         <div class="col-lg-12">
 
-
             <div class="card m-b-20">
                 <div class="card-body">
                     <form action="{{ route('customer-report') }}" method="get">
@@ -51,6 +50,10 @@
                             <div class="col-lg-4">
                                 <input type="input" class="form-control" name="address" id="address"
                                     placeholder="Address">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="input" class="form-control" name="status" id="status"
+                                    placeholder="Status">
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group row">
@@ -80,6 +83,7 @@
                                         <th>Address</th>
                                         <th>Contact No</th>
                                         <th>User Name</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
 
@@ -95,6 +99,11 @@
                                                 <td>{{ $customer->address}}</td>
                                                 <td>{{ $customer->contact_no}}</td>
                                                 <td>{{ $customer->user_name}}</td>
+                                                @if ($customer->status == 1)
+                                                <td>Active</td>
+                                            @else
+                                                <td>Inactive</td>
+                                            @endif
                                             </tr>
                                         @endforeach
                                     @endif

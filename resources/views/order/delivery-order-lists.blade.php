@@ -105,20 +105,50 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Name<span style="color: red">
+                            <label for="example-text-input" class="col-form-label">Item Name<span style="color: red">
                                     *</span></label>
-                            <input type="text" class="form-control" name="uName" id="uName" required
+                            <input type="text" class="form-control" name="uItemName" id="uItemName" required
                                 placeholder="Item Name" />
                         </div>
                     </div>
 
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Item Price<span style="color: red">
+                                    *</span></label>
+                            <input type="text" class="form-control" name="uItemPrice" id="uItemPrice" required
+                                placeholder="Item Price" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Qty<span style="color: red">
+                                    *</span></label>
+                            <input type="text" class="form-control" name="uQty" id="uQty" required
+                                placeholder="Item Qty" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="example-text-input" class="col-form-label">Image<span
+                                        style="color: red">
+                                        *</span></label>
+
+                                <input class="form-control form-control-lg" id="uImage" name='uImage'
+                                    type="file" />
+                                <span id="imageError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <input id="iddenOrderItemId" type="hidden">
+                <input id="hiddenOrderItemId" type="hidden">
                 <div class="row">
                     <div class="col-lg-4">
-                        <button type="submit" class="btn btn-warning waves-effect " onclick="updateItem()">
+                        <button type="submit" class="btn btn-warning waves-effect " onclick="updateOrderItems()">
                             Update Item</button>
-
                     </div>
                 </div>
             </div>
@@ -154,22 +184,33 @@
     $.post('getOrderItemById', {
     id: id
     }, function(data) {
-    $("#hiddenOrderItemId").val(data.idpackage);
-    $("#uName").val(data.name);
+    $("#hiddenOrderItemId").val(data.idorderitem);
+    $("#uItemName").val(data.name);
+    $("#uItemPrice").val(data.price);
+    $("#uQty").val(data.qty);
+
     });
     });
 
-    function updateItem() {
+    function updateOrderItems() {
 
     $('#errorAlert1').hide();
     $('#errorAlert1').html("");
 
-    var uName = $("#uName").val();
     var hiddenOrderItemId = $("#hiddenOrderItemId").val();
+    var uItemName=$("#uItemName").val();
+    var uItemPrice = $("#uItemPrice").val();
+    var uQty = $("#uQty").val();
+    
 
-    $.post('updateItem', {
+    $.post('updateOrderItems', {
         uName: uName,
-        hiddenOrderItemId: hiddenOrderItemId
+        hiddenOrderItemId: hiddenOrderItemId,
+        uItemName:uItemName,
+        uItemPrice:uItemPrice,
+        uQty:uQty,
+
+
     }, function(data) {
     if (data.errors != null) {
         $('#errorAlert1').show();
@@ -195,7 +236,7 @@
 
         $('input').val('');
         setTimeout(function() {
-            $('#updateItem').modal('hide');
+            $('#updateOrderItems').modal('hide');
         }, 200);
         location.reload();
     }
