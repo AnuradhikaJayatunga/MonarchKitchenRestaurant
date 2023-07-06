@@ -255,26 +255,33 @@ class DeliveryOrderController extends Controller
         }
     }
 
-    public function updateOrderItems(Request $request)
+    public function updateOrderItem(Request $request)
     {
         DB::beginTransaction();
         try {
             $uItemName = $request['uItemName'];
             $uItemPrice = $request['uItemPrice'];
             $uQuantity = $request['uQuantity'];
+            $uImage = $request['uImage'];
             $hiddenOrderItemId = $request['hiddenOrderItemId'];
             
 
             $validator = \Validator::make($request->all(), [
-
+                
                 'uItemName' => 'required',
-                'uItemPrice' => 'required',
-                'uQuantity' => 'required',
+                'uItemPrice' => 'required|not_in:0|gt:0',
+                'uQuantity' => 'required|not_in:0|gt:0',
+                'uImage' => 'required',
 
             ], [
+
                 'uItemName.required' => 'Item Name should be provided!',
-                'uItemPrice.required' => 'Item Price must be less than 255 characters long.',
-                'uQuantity.required' => 'Quantity should be provided!',   
+                'uItemPrice.not_in' => 'Item Price may not be 0!',
+                'uItemPrice.gt' => 'Item Price may not minus!',
+                'uItemPrice.required' => 'Item Price should be provided.',
+                'uQuantity.required' => 'Quantity should be provided!', 
+                'uQuantity.not_in' => 'Item Qty may not be 0!', 
+                'uImage.required' => 'Image should be provided!', 
                 
             ]);
 
@@ -282,12 +289,59 @@ class DeliveryOrderController extends Controller
                 return response()->json(['errors' => $validator->errors()->all()]);
             }
 
-            $updateOrderItems = Order::find($hiddenOrderItemId);
-            $updateOrderItems->item_name = $uItemName;
-            $updateOrderItems->item_price = $uItemPrice;
-            $updateOrderItems->qty= $uQuantity;
+            $imageName = time() . str_random(15) . '.' . $request->image->extension();
+            $request->image->move(public_path('assets/images/orders'), $imageName);
+
+            $record = new DeliveryOrderItems();
+            $record->quantity = $request['quantity'];
+            $record->image = $request['image'];
+            $record->name = $request['itemName'];
+            $record->item_price = $request['itemPrice'];
+            $record->status = 1;
+            $record->save();
+
+            $deliveryOrders = DeliveryOrderIngrediantTemp::where('user_master_iduser_master', Auth::user()->iduser_master)->get();
+            foreach ($deliveryOrders as $deliveryOrder) {
+                $qty = $deliveryOrder->qty;
+                $stockQty = Stock::where('status', 1)
+                    ->where('qty_available', '>', 0)
+                    ->where('product_idproduct', $deliveryOrder->product_idproduct)->get();
+
+                foreach ($stockQty as $stock) {
+                    if ($stock->qty_available == 0) {
+                        $stock->status = '0';
+                        $stock->update();
+                        $qty = 0;
+                        break;
+                    } else if ($stock->qty_available > $deliveryOrder->qty) {
+                        $stock->qty_available -= $qty;
+                        $stock->save();
+                        $qty = 0;
+                        break;
+                    } else if ($stock->qty_available == $deliveryOrder->qty) {
+                        $stock->qty_available -= $qty;
+                        $stock->status = 0;
+                        $stock->save();
+                        $qty = 0;
+                        break;
+                    }
+                }
+
+                $save = new DeliveryOrderIngrediant();
+                $save->qty = $deliveryOrder->qty;
+                $save->product_idproduct = $deliveryOrder->product_idproduct;
+                $save->delivery_order_items_iddelivery_order_items = $record->iddelivery_order_items;
+                $save->save();
+                $deliveryOrder->delete();
+            }
+
+            $updateOrderItem = Order::find($hiddenOrderItemId);
+            $updateOrderItem->item_name = $uItemName;
+            $updateOrderItem->item_price = $uItemPrice;
+            $updateOrderItem->quantity= $uQuantity;
+            $updateOrderItem->image= $uImage;
                         
-            $updateOrderItems->update();
+            $updateOrderItem->update();
             DB::commit();
             return response()->json(['success' => 'Item updated successfully']);
         } catch (Exception $th) {

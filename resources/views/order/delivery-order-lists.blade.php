@@ -180,12 +180,12 @@
     $("#hiddenOrderItemId").val(data.idorderitem);
     $("#uItemName").val(data.name);
     $("#uItemPrice").val(data.price);
-    $("#uQty").val(data.qty);
+    $("#uQuantity").val(data.quantity);
 
     });
     });
 
-    function updateOrderItems() {
+    function updateOrderItem() {
 
     $('#errorAlert1').hide();
     $('#errorAlert1').html("");
@@ -193,14 +193,14 @@
     var hiddenOrderItemId = $("#hiddenOrderItemId").val();
     var uItemName=$("#uItemName").val();
     var uItemPrice = $("#uItemPrice").val();
-    var uQty = $("#uQty").val();
+    var uQuantity = $("#uQuantity").val();
     
 
-    $.post('updateOrderItems', {
+    $.post('updateOrderItem', {
         hiddenOrderItemId: hiddenOrderItemId,
         uItemName:uItemName,
         uItemPrice:uItemPrice,
-        uQty:uQty,
+        uQuantity:uQuantity,
 
 
     }, function(data) {
@@ -228,7 +228,7 @@
 
         $('input').val('');
         setTimeout(function() {
-            $('#updateOrderItems').modal('hide');
+            $('#updateOrderItem').modal('hide');
         }, 200);
         location.reload();
     }
