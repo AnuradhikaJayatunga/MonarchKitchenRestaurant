@@ -1,6 +1,6 @@
                 <footer class="footer" style="padding: 0">
-                    <h6>Monarch Kitchen Family Restaurant, No.85, Moratuwa - Piliyandala Rd, Piliyandala.</h6>
-                    <h6>Contact: 0112614568</h6>
+                    <p style = "font-size:8">Monarch Kitchen Family Restaurant, No.85, Moratuwa - Piliyandala Rd, Piliyandala.</p>
+                    <p>Contact: 0112614568</p>
 
                 </footer>
 

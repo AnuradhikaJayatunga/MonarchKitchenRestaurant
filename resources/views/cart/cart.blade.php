@@ -206,7 +206,7 @@
 
 
                                 <div class="col-lg-12">
-                                    <p>(Additional charges will be added if you cancel the order)</p>
+                                    {{-- <p>(Additional charges will be added if you cancel the order)</p> --}}
                                     <span id="qtyError" class="text-danger text-center"></span>
                                     <button class="btn btn-secondary btn-block" onclick="payBill()">Pay Now</button>
                                 </div>

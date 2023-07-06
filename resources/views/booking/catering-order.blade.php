@@ -34,8 +34,8 @@
                             <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" height="auto"
                                 alt="Card image cap">
 
-                            <div class="card-body">
-                                <h4 style="color:black">{{ $order->name }}</h4>
+                            <div class="card-body" style="text-transform: capitalize">
+                                <h6 style="color:black"><b>{{ $order->name }}</b></h6>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <p style="color:black"><b>Rs: {{ number_format($order->price, 2) }}</b></p>
@@ -44,7 +44,7 @@
                                         <p style="color:black;text-align:right"><b>Qty:
                                                 {{ number_format($order->qty, 2) }}</b></p>
                                     </div> --}}
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" style="text-transform: capitalize">
                                         <p style="color:black;text-align:justify"> {{ $order->description }}</p>
                                     </div>
                                 </div>
