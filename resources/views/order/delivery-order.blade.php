@@ -9,7 +9,7 @@
         </button>
     </li>
     <li class="hide-phone list-inline-item app-search">
-        <h3 class="page-title">{{ $title }}</h3>
+        <h4 class="page-title">{{ $title }}</h4>
     </li>
 </ul>
 

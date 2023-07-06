@@ -42,7 +42,7 @@
                                         <th>Items</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
-                                        <th>Date</th>
+                                        <th>Required Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -35,13 +35,13 @@
                 @endif
 
                 <div class="col-lg-6" style="padding-bottom: 60px">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 15rem;">
                         <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" alt="Card image cap"
-                            height="250">
+                            height="240">
 
-                        <div class="card-body">
-                            <h4 style="color:black">{{ $order->name }}</h4>
-                            <div class="row">
+                        <div class="card-body" style="text-transform: capitalize">
+                            <h6 style="color:black"><b>{{ $order->name }}</b></h6>
+                            <div class="row"> 
                                 <div class="col-lg-6">
                                     <p style="color:black"><b>Rs: {{ number_format($order->item_price, 2) }}</b></p>
                                 </div>

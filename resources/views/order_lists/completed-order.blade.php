@@ -43,7 +43,7 @@
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
                                         <th>Driver</th>
-                                        <th>Date</th>
+                                        <th>Required Date</th>
                                         <th>Accepted Person</th>
                                         <th>Accepted Date and Time</th>
                                         <th>Print</th>

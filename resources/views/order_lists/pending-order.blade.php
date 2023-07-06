@@ -43,7 +43,7 @@
                                         <th>Table No</th>
                                         <th>Total Cost</th>
                                         <th>No of Persons</th>
-                                        <th>Order request date</th>
+                                        <th>Required Date</th>
                                         <th>Order placement date</th>
                                         <th>Time</th>
                                         <th>Option</th>
@@ -176,7 +176,7 @@
     function acceptOrder(id) {
 
         swal({
-                title: 'Do you really want to approved this order?',
+                title: 'Do you really want to approve this order?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Approved!',
