@@ -181,6 +181,7 @@
     $("#uItemName").val(data.name);
     $("#uItemPrice").val(data.price);
     $("#uQuantity").val(data.quantity);
+    $("#uImage").val(data.image);
 
     });
     });
@@ -194,6 +195,7 @@
     var uItemName=$("#uItemName").val();
     var uItemPrice = $("#uItemPrice").val();
     var uQuantity = $("#uQuantity").val();
+    var uImage = $("#uImage").val();
     
 
     $.post('updateOrderItem', {
@@ -201,6 +203,7 @@
         uItemName:uItemName,
         uItemPrice:uItemPrice,
         uQuantity:uQuantity,
+        uImage:uImage,
 
 
     }, function(data) {

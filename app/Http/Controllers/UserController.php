@@ -44,7 +44,7 @@ class UserController extends Controller
             'fName' => 'required|max:115',
             'lName' => 'required|max:115',
             'contactNo' => 'required|max:10|min:10',
-            'username' => 'required|email',
+            'username' => 'required',
             'password' => 'required|min:9',
             'address' => 'required',
             'role' => 'required',
@@ -96,7 +96,7 @@ class UserController extends Controller
                 'fName' => 'required|max:115',
                 'lName' => 'required|max:115',
                 'contactNo' => 'required|max:10|min:10',
-                'username' => 'required|email',
+                'username' => 'required',
                 'password' => 'required|min:9',
                 'address' => 'required',
             ], [
@@ -148,7 +148,7 @@ class UserController extends Controller
                 'fName' => 'required|max:115',
                 'lName' => 'required|max:115',
                 'contactNo' => 'required|max:10|min:10',
-                'username' => 'required|email',
+                'username' => 'required',
                 'password' => 'required|min:9',
                 'address' => 'required|max:200',
 
@@ -204,7 +204,7 @@ class UserController extends Controller
                 'fName' => 'required|max:115',
                 'lName' => 'required|max:115',
                 'contactNo' => 'required|max:10|min:10',
-                'username' => 'required|email',
+                'username' => 'required',
                 'password' => 'required|min:9',
                 'address' => 'required|max:200',
 
@@ -264,7 +264,7 @@ class UserController extends Controller
 
         ], [
             'update_pass2.required' => 'Password should be provided!',
-            'compass.required' => 'Conform Password should be provided!',
+            'compass.required' => 'Confirm Password should be provided!',
         ]);
 
         if ($validator->fails()) {
@@ -297,7 +297,7 @@ class UserController extends Controller
     {
         $validator = \Validator::make($request->all(), [
 
-            'userName' => 'required',
+            'userName' => 'required|username|unique:email',
             'password' => 'required|min:9',
         ], [
             'userName.required' => 'User Name should be provided!',

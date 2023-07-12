@@ -39,7 +39,7 @@ class TaskController extends Controller
             $changeStatus->status=3;
             $changeStatus->save();
 
-            return response()->json(['success'=>'Develiered successfully.']);
+            return response()->json(['success'=>'Delivered successfully.']);
         }
      
 

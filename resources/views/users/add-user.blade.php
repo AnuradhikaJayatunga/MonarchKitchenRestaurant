@@ -178,7 +178,7 @@
                     }
 
                     if (data.errors.username) {
-                        var p = document.getElementById('NIcError');
+                        var p = document.getElementById('emailAddressError');
                         p.innerHTML = data.errors.username[0];
                     }
                     if (data.errors.password) {

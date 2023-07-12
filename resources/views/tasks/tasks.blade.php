@@ -75,13 +75,13 @@
 
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
-                                                                @if ($order->status !== 2)
+                                                                @if ($order->status !== 1)
                                                                     <a href="#" class="dropdown-item"
                                                                         onclick="completeTask({{ $order->idorder }})"
                                                                         data-toggle="modal" ">Complete Task</i>
                                                                     </a>
  @endif
-                                                                        @if ($order->status == 2)
+                                                                        @if ($order->status == 1)
                                                                             <a href="#" class="dropdown-item"
                                                                                 onclick="print({{ $order->idorder }})"
                                                                                 onclick="print({{ $order->idorder }})"">Print</i>
@@ -182,7 +182,7 @@
     function completeTask(id) {
 
         swal({
-                title: 'Do you really want to complte this Task?',
+                title: 'Do you really want to complete this Task?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Complete!',
@@ -204,7 +204,7 @@
                     success: function(data) {
                         notify({
                             type: "success", //alert | success | error | warning | info
-                            title: 'TASK COMPLTED',
+                            title: 'TASK COMPLETED',
                             autoHide: true, //true | false
                             delay: 2500, //number ms
                             position: {
