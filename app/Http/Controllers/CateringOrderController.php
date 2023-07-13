@@ -115,6 +115,36 @@ class CateringOrderController extends Controller
         }
     }
 
+    public function deleteCateringOrderItems(Request $request)
+    {
+        $order=CateringOrderItems::find($request['id']);
+        $isCateringOrderItemsUsed = CateringOrderItems::where('id',$order->idcatering_order_items )->first();
+        if ($isCateringOrderItemsUsed) {
+            $isorderexist = CateringOrderItems::find($isCateringOrderItemsUsed->order_idorder );
+            if($isorderexist)
+            {
+                if($isorderexist->type!='Catering Order')
+            {
+                return response()->json(['error' => 'Item used in Order']);  
+            }   
+            }    
+           
+            }
+       
+        
+        DB::beginTransaction();
+        try {
+            $record = CateringOrderItems::find($request['id']);
+            CateringOrderIngrediant::where('catering_order_items_idcatering_order_items',$record->idcatering_order_items)->delete();
+            $record->delete();
+            DB::commit();
+            return response()->json(['success' => 'Item deleted successfully']);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            throw $exception;
+        } 
+    }
+
     public function saveCateringOrder(Request $request)
     {
 

@@ -131,7 +131,7 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="col-form-label">Image</label>
                                 <input class="form-control form-control-lg" id="uImage" name='uImage'
-                                    type="file" />
+                                    type="file" accept=".jpeg,.png,.jpg,.gif,.svg"/>
                                 <span id="imageError" class="text-danger"></span>
                             </div>
                     </div>

@@ -289,13 +289,13 @@ class DeliveryOrderController extends Controller
                 return response()->json(['errors' => $validator->errors()->all()]);
             }
 
-            $imageName = time()    str_random(15) . '.' . $request->image->extension();
+            $imageName = time() . str_random(15) .'.' . $request->image->extension();
             $request->image->move(public_path('assets/images/orders'), $imageName);
 
             $record = new DeliveryOrderItems();
             $record->quantity = $request['quantity'];
             $record->image = $request['image'];
-            $record->name = $request['itemName'];
+            $record->name = $request['itemName']; 
             $record->item_price = $request['itemPrice'];
             $record->status = 1;
             $record->save();

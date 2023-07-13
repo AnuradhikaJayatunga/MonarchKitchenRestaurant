@@ -36,6 +36,7 @@
 
                 <div class="col-lg-6" style="padding-bottom: 60px">
                     <div class="card" style="width: 15rem;">
+                       
                         <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" alt="Card image cap"
                             height="240">
 
@@ -59,6 +60,7 @@
 
                     </div>
                 </div>
+                
                 </a>
             @endforeach
 
