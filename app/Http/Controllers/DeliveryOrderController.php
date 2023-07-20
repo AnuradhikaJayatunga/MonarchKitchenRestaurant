@@ -295,7 +295,7 @@ class DeliveryOrderController extends Controller
             $record = new DeliveryOrderItems();
             $record->quantity = $request['quantity'];
             $record->image = $request['image'];
-            $record->name = $request['itemName']; 
+            $record->item_name = $request['itemName']; 
             $record->item_price = $request['itemPrice'];
             $record->status = 1;
             $record->save();
@@ -335,11 +335,11 @@ class DeliveryOrderController extends Controller
                 $deliveryOrder->delete();
             }
 
-            $updateOrderItem = Order::find($hiddenOrderItemId);
+            $updateOrderItem = DeliveryOrderItems::find($hiddenOrderItemId);
             $updateOrderItem->item_name = $uItemName;
             $updateOrderItem->item_price = $uItemPrice;
             $updateOrderItem->quantity= $uQuantity;
-            $updateOrderItem->image= $uImage;
+            $updateOrderItem->image= $uImage; 
                         
             $updateOrderItem->update();
             DB::commit();

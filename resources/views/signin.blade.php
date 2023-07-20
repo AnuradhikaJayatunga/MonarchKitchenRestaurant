@@ -1,10 +1,20 @@
 @include('includes.header_account')
 
+<style>
+    body {
+      background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-hamburg-fast-food-anniversary-flyer-background-material-picture-image_1056361.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    </style> 
+
 <!-- Begin page -->
-<div class="accountbg"></div>
+<div class="accountbg" style="background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-hamburg-fast-food-anniversary-flyer-background-material-picture-image_1056361.jpg);" ></div>
 <div class="wrapper-page">
 
-    <div class="card">
+    <div class="card" >
+      
         <div class="card-body">
 
             <h3 class="text-center m-0">
@@ -36,8 +46,7 @@
 
 
                 <form class="form-horizontal m-t-30" action="{{ route('loginMy') }}" method="POST">
-                    {{-- <form class="form-horizontal m-t-30" action="{{ route('authenticate') }}" method="POST"> --}}
-
+                
                     <div class="form-group">
                         <label for="username">Email Address</label>
                         <input type="text" class="form-control" id="username" name="username"
@@ -73,7 +82,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 

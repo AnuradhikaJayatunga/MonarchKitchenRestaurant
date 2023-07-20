@@ -25,20 +25,19 @@
 
 <div class="page-content-wrapper">
 
-    <div class="card">
+    <div class="card-group">
         <div class="row">
             @foreach ($orders as $order)
                 <a href="{{ route('place-catering-order', ['idOrder' => $order->idcatering_order_items]) }}">
                     <div class="col-lg-3" style="padding-bottom: 50px">
                         <div class="card" style="width: 20rem;">
-                            <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" height="auto"
-                                alt="Card image cap">
-
-                            <div class="card-body" style="text-transform: capitalize">
-                                <h6 style="color:black"><b>{{ $order->name }}</b></h6>
-                                <div class="row">
+                            <img class="img-thumbnail" src="assets/images/orders/{{ $order->image }}" height="270"
+                            style="max-width:100%" alt="Card image cap">
+                            <div class="card-body" style="text-transform: capitalize">        
+                             <h6 style="color:black"><b>{{ $order->name }}</b></h6>
+                              <div class="row">
                                     <div class="col-lg-6">
-                                        <p style="color:black"><b>Rs: {{ number_format($order->price, 2) }}</b></p>
+                                        <p style="color:rgba(2, 1, 1, 0.911)"><b>Rs: {{ number_format($order->price, 2) }}</b></p>
                                     </div>
                                     {{-- <div class="col-lg-6">
                                         <p style="color:black;text-align:right"><b>Qty:

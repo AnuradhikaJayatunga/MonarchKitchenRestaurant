@@ -48,12 +48,11 @@
                                     <span id="itemNameError" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                         <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="col-form-label">Item Price<span
                                             style="color: red">
                                             *</span></label>
-
                                     <input type="number" class="form-control" name="itemPrice" id="itemPrice"
                                         placeholder="Item Price" />
                                     <span id="itemPriceError" class="text-danger"></span>
@@ -63,7 +62,6 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="col-form-label">Qty<span style="color: red">
                                             *</span></label>
-
                                     <input type="number" class="form-control" name="itemQty" id="itemQty"
                                         placeholder="Qty" />
                                     <span id="itemQtyError" class="text-danger"></span>
@@ -76,7 +74,6 @@
                                     <label for="example-text-input" class="col-form-label">Image<span
                                             style="color: red">
                                             *</span></label>
-
                                     <input class="form-control form-control-lg" id="image" name='image'
                                         type="file" />
                                     <span id="imageError" class="text-danger"></span>
