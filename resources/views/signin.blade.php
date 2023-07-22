@@ -11,12 +11,17 @@
 
 <!-- Begin page -->
 <div class="accountbg" style="background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-hamburg-fast-food-anniversary-flyer-background-material-picture-image_1056361.jpg);" ></div>
-<div class="wrapper-page">
+<div class="page-content-wrapper">
 
-    <div class="card" >
-      
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="card m-b-15">
+            <div class="card" >
+        
         <div class="card-body">
-
             <h3 class="text-center m-0">
                 <a href="index" class="logo logo-admin"><img src="assets/images/logo.jpeg" height="100"
                         alt="logo"></a>
@@ -71,6 +76,7 @@
                         </div>
                     </div>
 
+                   
                     <div class="form-group mb-0 row">
                         <div class="col-12">
                             <p style="text-align: center">Not a member yet? <a href="{{ URL::asset('sign-up') }}"
@@ -84,8 +90,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 @include('includes.footer_account')

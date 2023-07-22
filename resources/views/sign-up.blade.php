@@ -1,7 +1,15 @@
 @include('includes.header_account')
 <link href="{{ URL::asset('assets/css/jquery.notify.css') }}" rel="stylesheet" type="text/css">
+<style>
+    body {
+      background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-hamburg-fast-food-anniversary-flyer-background-material-picture-image_1056361.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    </style> 
 <!-- Begin page -->
-<div class="accountbg"></div>
+<div class="accountbg" style="background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-hamburg-fast-food-anniversary-flyer-background-material-picture-image_1056361.jpg);" ></div>
 
 <div class="page-content-wrapper">
     <div class="container-fluid">

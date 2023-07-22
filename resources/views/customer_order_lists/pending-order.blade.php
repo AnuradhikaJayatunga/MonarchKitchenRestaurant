@@ -219,7 +219,7 @@
                     <div class="col-lg-4">
                         <span id="error" class="text-danger"></span>
                         <div class="form-group">
-                            <span class="text-danger" id=commonError"></span>
+                            <span class="text-danger" id="commonError"></span>
 
                             <button class="btn btn-primary" type="button" onclick="editCatering()">
                                 Catering Edit
