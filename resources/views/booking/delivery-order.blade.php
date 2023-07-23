@@ -23,10 +23,10 @@
      PAGE CONTENT START
      ================== -->
 
-<div class="page-content-wrapper">
+ <div class="page-content-wrapper">
+        <div class=container-fluid>
 
-    <div class="card">
-        <div class="row">
+            <div class="row">  
             @foreach ($orders as $order)
                 @if ($order->qty == 0)
                     <a href="#">
@@ -34,17 +34,16 @@
                         <a href="#" onclick="addToCart({{ $order->iddelivery_order_items }})">
                 @endif
 
-                <div class="col-lg-6" style="padding-bottom: 60px">
-                    <div class="card" style="width: 15rem;">
-                       
-                        <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" alt="Card image cap"
-                            height="240">
-
-                        <div class="card-body" style="text-transform: capitalize">
+                <div class="col-sm-6" style="padding-bottom: 60px" style="padding-top: 60px">
+                    <div class="card" style="width: 18rem;" style="height:auto"> 
+                       <img class="card-img-top" src="assets/images/orders/{{ $order->image }}" alt="Card image cap"
+                        style="max-width:100%" height="240">
+                        
+                        <div class="card-body"  style="text-transform: capitalize">
                             <h6 style="color:black"><b>{{ $order->name }}</b></h6>
-                            <div class="row"> 
-                                <div class="col-lg-6">
-                                    <p style="color:black"><b>Rs: {{ number_format($order->item_price, 2) }}</b></p>
+                            <div class="card text-white bg-danger mb-3"> 
+                            <div class="card-body">
+                                    <p style="color:rgb(253, 249, 249)"><b>Rs: {{ number_format($order->item_price, 2) }}</b></p>
                                 </div>
                                 {{-- <div class="col-lg-6">
                                     <p style="color:black;text-align:right"><b>Qty:
@@ -63,7 +62,7 @@
                 
                 </a>
             @endforeach
-
+            </div>
         </div>
     </div>
 </div>

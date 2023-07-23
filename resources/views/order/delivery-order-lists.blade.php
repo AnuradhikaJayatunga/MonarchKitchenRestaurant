@@ -84,7 +84,7 @@
     </div>
 </div>
 
-<!--update supplier-->
+<!--update delivery item-->
 <div class="modal fade" id="updateItem" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -192,7 +192,7 @@
     $('#errorAlert1').html("");
 
     var hiddenOrderItemId = $("#hiddenOrderItemId").val();
-    var uItemName=$("#uItemName").val();
+    var uItemName = $("#uItemName").val();
     var uItemPrice = $("#uItemPrice").val();
     var uQuantity = $("#uQuantity").val();
     var uImage = $("#uImage").val();
