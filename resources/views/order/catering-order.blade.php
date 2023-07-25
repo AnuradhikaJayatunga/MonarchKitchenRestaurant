@@ -46,7 +46,7 @@
                                         <option disabled selected>Select Package</option>
                                         @foreach ($packages as $package)
                                             <option value="{{ $package->idpackage }}">
-                                                {{ $package->name }}
+                                                {{ $package->package}}
                                             </option>
                                         @endforeach
 

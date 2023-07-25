@@ -85,7 +85,7 @@
 
                                                                 <div class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton">
-                                                                    @if ($order->driver_id == null)
+                                                                    @if ($order->driver_id == null &&  $order->type!='Reservation Order')
                                                                         <a href="#" class="dropdown-item"
                                                                             data-toggle="modal"
                                                                             data-id="{{ $order->idorder }}"

@@ -19,4 +19,9 @@ class CateringOrderItems extends Model
             'category' => 'Catering Orders',
         ];
     }
+
+    public function Package(){  
+        return $this->belongsTo(Package::class);
+    }
+
 }

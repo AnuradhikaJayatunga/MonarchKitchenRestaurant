@@ -10,4 +10,9 @@ class Package extends Model
 {
     protected $table = 'package';
     protected $primaryKey = 'idpackage';
+
+    public function CateringOrderItems()
+    {
+        return $this->hasMany(CateringOrderItems::class,'package_idpackage');
+    }
 }

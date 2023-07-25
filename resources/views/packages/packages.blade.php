@@ -60,7 +60,7 @@
 
                                             @foreach ($packages as $package)
                                                 <tr>
-                                                    <td>{{ $package->name }}</td>
+                                                    <td>{{ $package->package }}</td>
                                                     @if ($package->status == 1)
                                                         <td>
                                                             <p>

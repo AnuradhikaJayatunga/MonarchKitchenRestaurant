@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
+                                        <th>Package</th>
                                         <th>Available Quantity</th>
                                         <th>Price</th>
                                         <th>Option</th>
@@ -52,8 +53,9 @@
                                                             width="50px" />
                                                     </td>
                                                     <td>{{ $order->name }}</td>
+                                                    <td>{{ $order->Package->package}}</td>
                                                     <td>{{ $order->qty }}</td>
-                                                    <td>{{ number_format($order->price, 2) }}</td>
+                                                     <td>{{ number_format($order->price, 2) }}</td>
                                                     <td>
                                                         <p>
                                                                 <button type="button"
