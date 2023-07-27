@@ -365,7 +365,7 @@ class BookingController extends Controller
         try {
             $validator = \Validator::make($request->all(), [
                 'productId' => 'required',
-                'qty' => 'required|not_in:0|gt:0'
+                'qty' => 'required|not_in:0|gt:0|min:1',
             ], [
                 'productId.required' => 'Product should be provided!',
                 'qty.required' => 'Qty should be provided!',
@@ -417,7 +417,7 @@ class BookingController extends Controller
                 'noOfPersons.required' => 'Quantity should be provided!',
                 'noOfPersons.not_in' => 'Quantity may not be 0!',
                 'noOfPersons.gt' => 'Quantity may not minus!',
-                'noOfPersons.min' => 'Quantity should be greater than two!',
+                'noOfPersons.min' => 'Quantity should be greater than one!',
             ]);
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()]);

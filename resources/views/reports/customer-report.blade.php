@@ -57,8 +57,8 @@
 
                                     <select class="select2" id="status" name="status">
                                         <option selected disabled>Select Status</option>
-                                        <option value="1">ACTIVE</option>
-                                        <option value="0">INACTIVE</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                         
                                     </select>                                
                                 </div>

@@ -63,11 +63,17 @@
                                                             data-target="#viewItems">View Item</button></td>
                                                     <td>{{ $order->total_cost }}</td>
                                                     <td>{{ $order->no_of_persons }}</td>
+                                                    @if($order->type=='Reservation Order')
+                                                    <td>-</td>
+                                                @else
                                                     <td>{{ $order->User->first_name }}
                                                         {{ $order->User->last_name }}</td>
+                                                    @endif
                                                     <td>{{ $order->date }}</td>
+                                                   
                                                     <td>{{ $order->acceptUser->first_name }}
                                                         {{ $order->acceptUser->last_name }}</td>
+                                                   
                                                     <td>{{ $order->accept_date_time }}</td>
                                                     <td>
                                                         <button href="#" class="btn btn-primary btn-sm"

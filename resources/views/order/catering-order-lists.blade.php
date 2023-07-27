@@ -39,7 +39,7 @@
                                         <th>Package</th>
                                         <th>Available Quantity</th>
                                         <th>Price</th>
-                                        <th>Option</th>
+                                        {{-- <th>Option</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +56,7 @@
                                                     <td>{{ $order->Package->package}}</td>
                                                     <td>{{ $order->qty }}</td>
                                                      <td>{{ number_format($order->price, 2) }}</td>
-                                                    <td>
+                                                    {{-- <td>
                                                         <p>
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-warning  waves-effect waves-light"
@@ -70,7 +70,7 @@
                                                                         class="fa fa-trash"></i>
                                                                 </button>
                                                             </p>
-                                                        </td>
+                                                        </td> --}}
                                                 </tr>
                                             @endforeach
                                         @endif

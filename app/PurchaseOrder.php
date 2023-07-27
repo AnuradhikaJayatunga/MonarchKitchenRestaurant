@@ -17,4 +17,6 @@ class PurchaseOrder extends Model
     public function User(){
         return $this->belongsTo(User::class,'master_user_idmaster_user');
     }
+    
+    
 }

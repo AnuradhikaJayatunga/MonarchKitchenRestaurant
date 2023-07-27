@@ -59,8 +59,8 @@
                                                             <button type="button"
                                                                 class="btn btn-sm btn-warning  waves-effect waves-light"
                                                                 data-toggle="modal"
-                                                                data-id="{{ $order->iddelivery_order_items  }}" id="uOrderItemId"
-                                                                data-target="#updateItem"><i class="fa fa-edit"></i>
+                                                                data-id="{{ $order->iddelivery_order_items  }}" id="deliveryOrderItemId"
+                                                                data-target="#editDeliveryItem"><i class="fa fa-edit"></i>
                                                             </button>
                                                             <button type="button"
                                                                 onclick="deleteOrderItems({{ $order->iddelivery_order_items  }})"
@@ -85,12 +85,12 @@
 </div>
 
 <!--update delivery item-->
-<div class="modal fade" id="updateItem" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+<div class="modal fade" id="editDeliveryItem" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Edit Item</h5>
+              <h5 class="modal-title mt-0">Edit Item</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                 </button> 
             </div>
@@ -102,48 +102,67 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Item Name<span
-                                    style="color: red"> *</span></label>
-                            <input type="text" class="form-control" name="uItemName" id="uItemName"
-                                required placeholder="Item Name" />
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Item Price<span
-                                style="color: red"> *</span></label>
-                            <input type="text" class="form-control" name="uItemPrice" id="uItemPrice"
-                                placeholder="Item Price" />
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Quantity<span
-                                style="color: red"> *</span></label>
-                            <input type="text" class="form-control" name="uQuantity" id="uQuantity"
-                                placeholder="Quantity" />
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="example-text-input" class="col-form-label">Image</label>
-                                <input class="form-control form-control-lg" id="uImage" name='uImage'
-                                    type="file" accept=".jpeg,.png,.jpg,.gif,.svg"/>
-                                <span id="imageError" class="text-danger"></span>
+                <form id="editDeliveryOrderItem" class="form-horizontal" action="{{ route('editDeliveryItem') }}"
+                        method="POST">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-lg-12">
                             </div>
-                    </div>
-                </div>
-                <input id="hiddenOrderItemId" type="hidden">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <button type="submit" class="btn btn-warning waves-effect " onclick="updateOrderItem()">
-                            Update Item</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Item Name<span
+                                            style="color: red">
+                                            *</span></label>
 
-                    </div>
-                </div>
+                                    <input type="text" class="form-control" name="itemName" id="itemName"
+                                        placeholder="Item Name" />
+                                    <span id="itemNameError" class="text-danger"></span>
+                                </div>
+                            </div>
+                         <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Item Price<span
+                                            style="color: red">
+                                            *</span></label>
+                                    <input type="number" class="form-control" name="itemPrice" id="itemPrice"
+                                        placeholder="Item Price" />
+                                    <span id="itemPriceError" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Qty<span style="color: red">
+                                            *</span></label>
+                                    <input type="number" class="form-control" name="itemQty" id="itemQty"
+                                        placeholder="Qty" />
+                                    <span id="itemQtyError" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Image<span
+                                            style="color: red">
+                                            *</span></label>
+                                    <input class="form-control form-control-lg" id="image" name='image'
+                                        type="file" />
+                                    <span id="imageError" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <span id="ingredientError" class="text-danger"></span>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning waves-effect ">
+                                        Edit Item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
@@ -159,86 +178,68 @@
             }
         });
     });
-    $(document).on('focus', ':input', function() {
-        $(this).attr('autocomplete', 'off');
-    });
-    $('.modal').on('hidden.bs.modal', function() {
-        $('#errorAlert').hide();
-        $('#errorAlert').html('');
-        $('#errorAlert1').hide();
-        $('#errorAlert1').html('');
-        $('input').val('');
-    });
 
-    $(document).on('click', '#uOrderItemId', function() {
+    $("#deliveryOrderItemId").on("submit", function(event) {
+        $("#itemNameError").html('');
+        $("#itemPriceError").html('');
+        $("#itemQtyError").html('');
+        $("#imageError").html('');
+        event.preventDefault();
+        
+        $.ajax({
+            url: 'editDeliveryItem',
+            type: 'POST',
+            data: new FormData(this),
+            dataType: 'JSON',
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                if (data.ingredientError != null) {
+                    if (data.ingredientError) {
+                        var p = document.getElementById('ingredientError');
+                        p.innerHTML = data.ingredientError;
+                    }
+                }
+                if (data.errors != null) {
+                    if (data.errors.itemName) {
+                        var p = document.getElementById('itemNameError');
+                        p.innerHTML = data.errors.itemName[0];
+                    }
+                    if (data.errors.itemPrice) {
+                        var p = document.getElementById('itemPriceError');
+                        p.innerHTML = data.errors.itemPrice[0];
+                    }
+                    if (data.errors.itemQty) {
+                        var p = document.getElementById('itemQtyError');
+                        p.innerHTML = data.errors.itemQty[0];
+                    }
+                    if (data.errors.image) {
+                        var p = document.getElementById('imageError');
+                        p.innerHTML = data.errors.image[0];
+                    }
+                }
+                if (data.success != null) {
+                    notify({
+                        type: "success", //alert | success | error | warning | info
+                        title: 'DELIVERY ORDER UPDATED',
+                        autoHide: true, //true | false
+                        delay: 2500, //number ms
+                        position: {
+                            x: "right",
+                            y: "top"
+                        },
+                        icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
+                        message: data.success,
+                    });
+                    setTimeout(function() {
+                        location.reload();
+                    },200);
+                }
+            }
+        });
 
-    var id = $(this).data("id");
-
-    $.post('getOrderItemById', {
-    id: id
-    }, function(data) {
-    $("#hiddenOrderItemId").val(data.idorderitem);
-    $("#uItemName").val(data.name);
-    $("#uItemPrice").val(data.price);
-    $("#uQuantity").val(data.quantity);
-    $("#uImage").val(data.image);
-
-    });
-    });
-
-    function updateOrderItem() {
-
-    $('#errorAlert1').hide();
-    $('#errorAlert1').html("");
-
-    var hiddenOrderItemId = $("#hiddenOrderItemId").val();
-    var uItemName = $("#uItemName").val();
-    var uItemPrice = $("#uItemPrice").val();
-    var uQuantity = $("#uQuantity").val();
-    var uImage = $("#uImage").val();
     
-
-    $.post('updateOrderItem', {
-        hiddenOrderItemId: hiddenOrderItemId,
-        uItemName:uItemName,
-        uItemPrice:uItemPrice,
-        uQuantity:uQuantity,
-        uImage:uImage,
-
-
-    }, function(data) {
-    if (data.errors != null) {
-        $('#errorAlert1').show();
-        $.each(data.errors, function(key, value) {
-            $('#errorAlert1').append('<p>' + value + '</p>');
-        });
-     }
-        if (data.success != null) {
-
-         notify({
-            type: "success", //alert | success | error | warning | info
-            title: 'ORDER ITEM UPDATED',
-            autoHide: true, //true | false
-            delay: 2500, //number ms
-            position: {
-                x: "right",
-                y: "top"
-            },
-            icon: '<img src="{{ URL::asset('assets/images/correct.png') }}" />',
-
-            message: data.success,
-        });
-
-        $('input').val('');
-        setTimeout(function() {
-            $('#updateOrderItem').modal('hide');
-        }, 200);
-        location.reload();
-    }
-
-})
-}
-
 function deleteOrderItems(id) {
         swal({
                 title: 'Do you really want to delete this Item?',

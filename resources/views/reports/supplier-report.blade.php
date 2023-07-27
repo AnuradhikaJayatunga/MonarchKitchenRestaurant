@@ -66,7 +66,8 @@
                                 cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Company Name</th>
+                                        <th>Supplier ID</th>
+                                        <th>Supplier Name</th>
                                         <th>Address</th>
                                         <th>Contact No</th>
                                         <th>Email</th>
@@ -81,7 +82,7 @@
 
                                         @foreach ($suppliers as $supplier)
                                             <tr>
-                                              
+                                                <td>{{ $supplier->idsupplier}}</td>
                                                 <td>{{ $supplier->company_name}}</td>
                                                 <td>{{ $supplier->address}}</td>
                                                 <td>{{ $supplier->contact_no}}</td>

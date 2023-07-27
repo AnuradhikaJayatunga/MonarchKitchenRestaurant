@@ -33,10 +33,10 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Quantity<span class="text-danger"> *</span></label>
+                                    <label>No of Persons<span class="text-danger"> *</span></label>
                                     <input type="number" class="form-control" name="noOfPersons" id="noOfPersons"
-                                        min="0" oninput="this.value = Math.abs(this.value)"
-                                        onkeyup="selectMaxQty()" placeholder="Quantity" />
+                                        min="2" oninput="this.value = Math.abs(this.value)"
+                                        onkeyup="selectMaxQty()" placeholder="No of Persons" />
                                     <span class="text-danger" id="noOfPersonsError"></span>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                         </select>
                                     </div>
                                 </div> --}}
-                        </div>
+                        </div> 
                     </div>
                 </div>
 
