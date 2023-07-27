@@ -75,11 +75,12 @@
 
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
-                                                                @if ($order->status !== 1)
+                                                                @if ($order->status == 1)
                                                                     <a href="#" class="dropdown-item"
                                                                         onclick="completeTask({{ $order->idorder }})"
                                                                         data-toggle="modal" ">Complete Task</i>
                                                                     </a>
+                                                                    @endif 
  @endif
                                                                         @if ($order->status == 1)
                                                                             <a href="#" class="dropdown-item"
@@ -91,7 +92,7 @@
                                                             </div>
 
                                                         </div>
-                                                        @endif 
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach

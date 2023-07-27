@@ -193,6 +193,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $record = Order::find($request['id']);
+            $record->is_task_completed = 1;
             $record->status = 2;
             $record->save();
             DB::commit();
@@ -209,6 +210,7 @@ class OrderController extends Controller
         try {
             $record = Order::find($request['id']);
             $record->is_task_completed = 1;
+            $record->status = 2;
             $record->save();
             DB::commit();
             return response()->json(['success' => 'Task Completed']);
@@ -231,10 +233,10 @@ class OrderController extends Controller
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()]);
             }
-
+// return $request['hiddenOrderId'];
             $record = Order::find($request['hiddenOrderId']);
             $record->driver_id = $request['driverId'];
-            $record->save();
+            $record->update();
             DB::commit();
             return response()->json(['success' => 'Order Completed']);
         } catch (Exception $e) {
