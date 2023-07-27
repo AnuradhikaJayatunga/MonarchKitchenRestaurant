@@ -41,8 +41,8 @@
                                         <th>Type</th>
                                         <th>Items</th>
                                         <th>Total Cost</th>
-                                        <th>No of Persons</th>
                                         <th>Driver</th>
+                                        <th>No of Persons</th>
                                         <th>Option</th>
                                     </tr>
                                 </thead>
