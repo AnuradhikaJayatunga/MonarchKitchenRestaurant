@@ -278,7 +278,7 @@
             id: id
         }, function(data) {
             $("#hiddenPackageId").val(data.idpackage);
-            $("#uName").val(data.name);
+            $("#uName").val(data.package);
         });
     });
 

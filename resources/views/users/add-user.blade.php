@@ -37,7 +37,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="pass">First Name</label>
+                                    <label for="pass">First Name<span
+                                        style="color: red"> *</span></label>
                                     <input type="text" class="form-control" id="fName" autocomplete="off"
                                         name="fName" placeholder="First Name">
                                     <small class="text-danger" id="fNameError"></small>
@@ -45,7 +46,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="pass">Last Name</label>
+                                    <label for="pass">Last Name<span
+                                        style="color: red"> *</span></label>
                                     <input type="text" class="form-control" id="lName" autocomplete="off"
                                         name="lName" placeholder="Last Name">
                                     <small class="text-danger" id="lNameError"></small>
@@ -57,7 +59,8 @@
 
 
                         <div class="form-group">
-                            <label for="pass">Contact No</label>
+                            <label for="pass">Contact No<span
+                                style="color: red"> *</span></label>
                             <input type="number" class="form-control" id="contactNo" autocomplete="off"
                                 name="contactNo" placeholder="+(94) XX XXX XXXX">
                             <small class="text-danger" id="contactNoError"></small>
@@ -65,13 +68,15 @@
 
 
                         <div class="form-group">
-                            <label for="pass">Email Address</label>
+                            <label for="pass">Email Address<span
+                                style="color: red"> *</span></label>
                             <input type="text" class="form-control" id="username" autocomplete="off" name="username"
                                 placeholder="Email Address">
                             <small class="text-danger" id="NIcError"></small>
                         </div>
                         <div class="form-group">
-                            <label for="pass">Address</label>
+                            <label for="pass">Address<span
+                                style="color: red"> *</span></label>
                             <input type="text" class="form-control" id="address" autocomplete="off" name="address"
                                 placeholder="Address">
                             <small class="text-danger" id="addressError"></small>
@@ -92,7 +97,8 @@
                             <small class="text-danger" id="roleError"></small>
                         </div>
                         <div class="form-group">
-                            <label for="pass">Password</label>
+                            <label for="pass">Password<span
+                                style="color: red"> *</span></label>
                             <input type="password" class="form-control" id="password" autocomplete="off"
                                 name="password" placeholder="Enter password">
                             <small class="text-danger" id="passwordError"></small>

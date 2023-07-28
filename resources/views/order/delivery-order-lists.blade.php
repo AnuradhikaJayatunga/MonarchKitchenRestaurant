@@ -56,15 +56,15 @@
                                                     <td>{{ number_format($order->item_price, 2) }}</td>
                                                     <td>
                                                     <p>
-                                                            <button type="button"
+                                                            {{-- <button type="button"
                                                                 class="btn btn-sm btn-warning  waves-effect waves-light"
                                                                 data-toggle="modal"
                                                                 data-id="{{ $order->iddelivery_order_items  }}" id="deliveryOrderItemId"
                                                                 data-target="#editDeliveryItem"><i class="fa fa-edit"></i>
-                                                            </button>
+                                                            </button> --}}
                                                             <button type="button"
-                                                                onclick="deleteOrderItems({{ $order->iddelivery_order_items  }})"
-                                                                class="btn btn-sm btn-danger  waves-effect waves-light"><i
+                                                                onclick="deleteOrderItems({{ $order->iddelivery_order_items}})"
+                                                                class="btn btn-sm btn-danger waves-effect waves-light"><i
                                                                     class="fa fa-trash"></i>
                                                             </button>
                                                         </p>
@@ -185,14 +185,14 @@
         $("#itemQtyError").html('');
         $("#imageError").html('');
         event.preventDefault();
-        
-        $.ajax({
+
+        $.ajax({ 
             url: 'editDeliveryItem',
             type: 'POST',
             data: new FormData(this),
             dataType: 'JSON',
             contentType: false,
-            cache: false,
+            cache: false, 
             processData: false,
             success: function(data) {
                 if (data.ingredientError != null) {
@@ -238,9 +238,10 @@
                 }
             }
         });
+    });
 
     
-function deleteOrderItems(id) {
+        function deleteOrderItems(id) {
         swal({
                 title: 'Do you really want to delete this Item?',
                 type: 'warning',
@@ -304,7 +305,7 @@ function deleteOrderItems(id) {
             }),
             function() {
 
-            }
+                }    
     }    
 
 </script>

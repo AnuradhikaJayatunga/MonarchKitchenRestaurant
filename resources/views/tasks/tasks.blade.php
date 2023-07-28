@@ -63,7 +63,7 @@
                                                         {{ $order->User->last_name }}</td> 
                                                     <td>{{ $order->no_of_persons }}</td>
                                                     <td>
-                                                        @if (\Illuminate\Support\Facades\Auth::user()->user_role_iduser_role == 2)
+                                                        @if (\Illuminate\Support\Facades\Auth::user()->user_role_iduser_role == 2 || \Illuminate\Support\Facades\Auth::user()->user_role_iduser_role == 1)
                                                         <div class="dropdown">
                                                             <button
                                                                 class="btn btn-success waves-effect btn-sm dropdown-toggle"
@@ -81,7 +81,7 @@
                                                                         data-toggle="modal" ">Complete Task</i>
                                                                     </a>
                                                                     @endif 
- @endif
+ 
                                                                         @if ($order->status == 1)
                                                                             <a href="#" class="dropdown-item"
                                                                                 onclick="print({{ $order->idorder }})"
@@ -92,6 +92,7 @@
                                                             </div>
 
                                                         </div>
+                                                        @endif
                                                         
                                                     </td>
                                                 </tr>

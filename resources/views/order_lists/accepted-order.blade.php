@@ -247,7 +247,7 @@
 
                         notify({
                             type: "success", //alert | success | error | warning | info
-                            title: 'ORDER COMPLTED',
+                            title: 'ORDER COMPLETED',
                             autoHide: true, //true | false
                             delay: 2500, //number ms
                             position: {

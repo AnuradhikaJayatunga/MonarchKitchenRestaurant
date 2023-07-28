@@ -37,7 +37,7 @@ class PackageController extends Controller
             }
 
             $saveSupplier = new Package();
-            $saveSupplier->name = $name;
+            $saveSupplier->package = $name;
             $saveSupplier->status = '1';
             $saveSupplier->save();
             DB::commit();
@@ -76,7 +76,7 @@ class PackageController extends Controller
             }
 
             $updateSupplier = Package::find($hiddenPackageId);
-            $updateSupplier->name = $name;
+            $updateSupplier->package = $name;
             $updateSupplier->update();
             DB::commit();
             return response()->json(['success' => 'Package updated successfully']);
